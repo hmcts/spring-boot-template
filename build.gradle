@@ -37,13 +37,6 @@ dependencyCheck {
   suppressionFile = 'dependency-check-suppressions.xml'
 }
 
-tasks.withType(FindBugs) {
-  reports {
-    xml.enabled = false
-    html.enabled = true
-  }
-}
-
 repositories {
   jcenter()
 }
