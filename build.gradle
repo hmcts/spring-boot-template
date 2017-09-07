@@ -37,11 +37,20 @@ dependencyCheck {
   suppressionFile = 'dependency-check-suppressions.xml'
 }
 
+def springBootVersion = '1.5.6.RELEASE'
+
 repositories {
   jcenter()
 }
 
 dependencies {
-  compile group: 'org.springframework.boot', name: 'spring-boot-starter'
-  testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: springBootVersion
+
+  compile group: 'uk.gov.hmcts.reform', name: 'java-logging-spring', version: '1.2.1'
+  compile group: 'uk.gov.hmcts.reform', name: 'java-logging-httpcomponents', version: '1.2.1'
+  compile group: 'uk.gov.hmcts.reform', name: 'http-proxy-spring-boot-autoconfigure', version: '1.1.0'
+
+  testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
 }
