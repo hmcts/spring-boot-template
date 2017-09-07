@@ -1,6 +1,5 @@
 plugins {
   id 'checkstyle'
-  id 'findbugs'
   id 'org.sonarqube' version '2.5'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.3.RELEASE'
