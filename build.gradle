@@ -18,6 +18,18 @@ targetCompatibility = 1.8
 checkstyle.toolVersion = '8.2'
 checkstyle.configFile = new File(rootDir, "checkstyle.xml")
 
+// make build fail on Checkstyle issues (https://github.com/gradle/gradle/issues/881)
+tasks.withType(Checkstyle).each { checkstyleTask ->
+  checkstyleTask.doLast {
+    reports.all { report ->
+      def outputFile = report.destination
+      if (outputFile.exists() && outputFile.text.contains("<error ")) {
+        throw new GradleException("There were checkstyle warnings! For more info check $outputFile")
+      }
+    }
+  }
+}
+
 // https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
 dependencyCheck {
   // Specifies if the build should be failed if a CVSS score above a specified level is identified.
