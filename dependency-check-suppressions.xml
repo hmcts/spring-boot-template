@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.1.xsd">
+
+  <!--
+
+  Add dependency check suppression rules here, in accordance with
+  https://jeremylong.github.io/DependencyCheck/general/suppression.html
+
+  Example:
+
+  <suppress>
+    <notes><![CDATA[
+      Does not apply as we're not using the XmlMapper.
+    ]]></notes>
+    <gav regex="true">^com\.fasterxml\.jackson\.(core|datatype|module):jackson-.*:.*$</gav>
+    <cve>CVE-2016-7051</cve>
+  </suppress>
+
+  -->
+
+</suppressions>
