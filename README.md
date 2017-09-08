@@ -8,7 +8,18 @@ The purpose of this template is to speed up the creation of new Spring applicati
 and help keep the same standards across multpile teams. If you need to create a new app, you can
 simply use this one as a starting point and build on top of it.
 
-TODO: complete the readme
+## What's inside
+
+The template is a working application with a minimal setup. It contains:
+ * application skeleton
+ * common plugins and libraries
+ * docker setup
+ * code quality tools already set up
+ * integration with Travis CI
+ * MIT license information
+
+The application exposes health endpoint (http://localhost:4550/health) and metrics endpoint
+(http://localhost:4550/metrics).
 
 ## Plugins
 
@@ -28,7 +39,9 @@ The template contains the following plugins:
     Triggers SonarQube analysis.
     You can start the analysis by executing the following command:
 
-    `gradle sonarqube`
+    ```bash
+      ./gradlew sonarqube
+    ```
 
   * jacoco
 
@@ -37,7 +50,9 @@ The template contains the following plugins:
     Provides code coverage metrics for Java code via integration with JaCoCo.
     You can create the report by running the following command:
 
-    `gradle jacocoTestReport`
+    ```bash
+      ./gradlew jacocoTestReport
+    ```
 
     The report will be created in build/reports subdirectory in your project directory.
 
@@ -69,4 +84,55 @@ The template contains the following plugins:
 
     Provides a task to determine which dependencies have updates. Usage:
 
-    `gradle dependencyUpdates -Drevision=release`
+    ```bash
+      ./gradlew dependencyUpdates -Drevision=release
+    ```
+
+## Building and deploying the application
+
+### Building the application
+
+The project uses [Gradle](https://gradle.org) as a build tool. It already contains
+`./gradlew` wrapper script, so there's no need to install gradle.
+
+To build the project execute the following command:
+
+```bash
+  ./gradlew build
+```
+
+### Running the application
+
+Create the image of the application by executing the following command:
+
+```bash
+  ./gradlew installDist
+```
+
+Create docker image:
+
+```bash
+  docker-compose build
+```
+
+Run the distribution (created in `build/install/spring-boot-template` directory)
+by executing the following command:
+
+```bash
+  docker-compose up
+```
+
+This will start the API container exposing the application's port
+(set to `4550` in this template app).
+
+In order to test if the application is up, you can call its health endpoint:
+
+```bash
+  curl http://localhost:4550/health
+```
+
+You should get a response similar to this:
+
+```
+  {"status":"UP","diskSpace":{"status":"UP","total":249644974080,"free":137188298752,"threshold":10485760}}
+```
