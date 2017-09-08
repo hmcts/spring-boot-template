@@ -38,6 +38,17 @@ dependencyCheck {
   suppressionFile = 'dependency-check-suppressions.xml'
 }
 
+jacocoTestReport {
+  executionData(test)
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectName", "Reform :: Spring Boot Template"
+    property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
+  }
+}
+
 def springBootVersion = '1.5.6.RELEASE'
 
 repositories {
