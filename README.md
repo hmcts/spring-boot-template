@@ -136,3 +136,6 @@ You should get a response similar to this:
 ```
   {"status":"UP","diskSpace":{"status":"UP","total":249644974080,"free":137188298752,"threshold":10485760}}
 ```
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
