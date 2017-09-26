@@ -52,6 +52,8 @@ dependencies {
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging-spring', version: '1.2.1'
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging-httpcomponents', version: '1.2.1'
   compile group: 'uk.gov.hmcts.reform', name: 'http-proxy-spring-boot-autoconfigure', version: '1.1.0'
+  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix', version: '1.3.4.RELEASE'
+  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix-dashboard', version: '1.3.4.RELEASE'
 
   testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
 }
