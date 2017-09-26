@@ -152,9 +152,9 @@ inside `@Component` or `@Service` annotated classes.
 
 When this API is running, you can monitor Hystrix metrics in real time using
 [Hystrix Dashboard](https://github.com/Netflix/Hystrix/wiki/Dashboard).
-In order to do this, visit `http://localhost:4550/hystrix` and provide `http://localhost:4550/hystrix.stream`
+In order to do this, visit http://localhost:4550/hystrix and provide http://localhost:4550/hystrix.stream
 as the Hystrix event stream URL. Keep in mind that you'll only see data once some
-of your Hystrix commands have been executed. Otherwise `Loading ...` message will be displayed
+of your Hystrix commands have been executed. Otherwise *'Loading...'* message will be displayed
 on the monitoring page.
 
 ### Other
