@@ -34,17 +34,6 @@ The template contains the following plugins:
     Performs quality checks on Java source files using Checkstyle and generates reports from these checks.
     The checks are included in gradle's *check* task (you can run them by executing `gradle check` command).
 
-  * org.sonarqube
-
-    https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Gradle
-
-    Triggers SonarQube analysis.
-    You can start the analysis by executing the following command:
-
-    ```bash
-      ./gradlew sonarqube
-    ```
-
   * jacoco
 
     https://docs.gradle.org/current/userguide/jacoco_plugin.html
