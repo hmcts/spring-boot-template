@@ -27,7 +27,11 @@
     <property name="eachLine" value="true"/>
   </module>
 
+  <module name="SuppressWarningsFilter" />
   <module name="TreeWalker">
+    <module name="UnusedImports"/>
+    <module name="HideUtilityClassConstructor"/>
+    <module name="SuppressWarningsHolder" />
     <module name="OuterTypeFilename"/>
     <module name="IllegalTokenText">
       <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
@@ -40,7 +44,7 @@
       <property name="allowNonPrintableEscapes" value="true"/>
     </module>
     <module name="LineLength">
-      <property name="max" value="100"/>
+      <property name="max" value="120"/>
       <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
     </module>
     <module name="AvoidStarImport"/>
@@ -82,7 +86,6 @@
       <property name="allowNoEmptyLineBetweenFields" value="true"/>
     </module>
     <module name="SeparatorWrap">
-      <property name="id" value="SeparatorWrapDot"/>
       <property name="tokens" value="DOT"/>
       <property name="option" value="nl"/>
     </module>
@@ -180,10 +183,14 @@
     <module name="VariableDeclarationUsageDistance"/>
     <module name="CustomImportOrder">
       <property name="sortImportsInGroupAlphabetically" value="true"/>
-      <property name="separateLineBetweenGroups" value="true"/>
-      <property name="customImportOrderRules" value="STATIC###THIRD_PARTY_PACKAGE"/>
+      <property name="separateLineBetweenGroups" value="false"/>
+      <property name="customImportOrderRules" value="THIRD_PARTY_PACKAGE###STANDARD_JAVA_PACKAGE###STATIC"/>
     </module>
     <module name="MethodParamPad"/>
+    <module name="NoWhitespaceBefore">
+      <property name="tokens" value="COMMA, SEMI, POST_INC, POST_DEC, DOT, ELLIPSIS, METHOD_REF"/>
+      <property name="allowLineBreaks" value="true"/>
+    </module>
     <module name="ParenPad"/>
     <module name="OperatorWrap">
       <property name="option" value="NL"/>
@@ -209,7 +216,7 @@
       <property name="target" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF, VARIABLE_DEF"/>
     </module>
     <module name="JavadocMethod">
-      <property name="scope" value="public"/>
+      <property name="scope" value="nothing"/>
       <property name="allowMissingParamTags" value="true"/>
       <property name="allowMissingThrowsTags" value="true"/>
       <property name="allowMissingReturnTag" value="true"/>

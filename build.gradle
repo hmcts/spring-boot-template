@@ -14,19 +14,11 @@ version = '0.0.1'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-checkstyle.toolVersion = '8.2'
-checkstyle.configFile = new File(rootDir, "checkstyle.xml")
-
-// make build fail on Checkstyle issues (https://github.com/gradle/gradle/issues/881)
-tasks.withType(Checkstyle).each { checkstyleTask ->
-  checkstyleTask.doLast {
-    reports.all { report ->
-      def outputFile = report.destination
-      if (outputFile.exists() && outputFile.text.contains("<error ")) {
-        throw new GradleException("There were checkstyle warnings! For more info check $outputFile")
-      }
-    }
-  }
+checkstyle {
+  maxWarnings = 0
+  toolVersion = '8.3'
+  // need to set configDir to rootDir otherwise submodule will use submodule/config/checkstyle
+  configDir = new File(rootDir, 'config/checkstyle')
 }
 
 // https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
