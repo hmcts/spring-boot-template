@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ruleset name="PMD rule set"
+  xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+
+  <description>
+    HMCTS PMD rule set
+  </description>
+
+  <rule ref="rulesets/java/basic.xml"/>
+  <rule ref="rulesets/java/braces.xml"/>
+  <rule ref="rulesets/java/imports.xml">
+    <exclude name="TooManyStaticImports"/>
+  </rule>
+  <rule ref="rulesets/java/unnecessary.xml"/>
+  <rule ref="rulesets/java/unusedcode.xml"/>
+
+</ruleset>
