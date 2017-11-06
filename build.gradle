@@ -1,6 +1,7 @@
 plugins {
   id 'application'
   id 'checkstyle'
+  id 'pmd'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.3.RELEASE'
   id 'org.springframework.boot' version '1.5.6.RELEASE'
@@ -19,6 +20,14 @@ checkstyle {
   toolVersion = '8.3'
   // need to set configDir to rootDir otherwise submodule will use submodule/config/checkstyle
   configDir = new File(rootDir, 'config/checkstyle')
+}
+
+pmd {
+  toolVersion = "5.8.1"
+  ignoreFailures = true
+  sourceSets = [sourceSets.main, sourceSets.test]
+  reportsDir = file("$project.buildDir/reports/pmd")
+  ruleSetFiles = files("config/pmd/ruleset.xml")
 }
 
 // https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
