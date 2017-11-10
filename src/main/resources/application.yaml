@@ -1,3 +1,7 @@
 server:
   # TODO: change to your application's port number
   port: 4550
+
+management:
+  security:
+    enabled: ${MANAGEMENT_SECURITY_ENABLED:true}
