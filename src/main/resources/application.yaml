@@ -4,4 +4,4 @@ server:
 
 management:
   security:
-    enabled: false
+    enabled: ${MANAGEMENT_SECURITY_ENABLED:true}
