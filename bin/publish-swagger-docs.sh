@@ -12,6 +12,9 @@ fi
 
 cd ..
 
+# assign environment variables
+source .env
+
 ./gradlew clean installDist
 
 docker-compose up -d
@@ -19,7 +22,7 @@ docker-compose up -d
 sleep 5
 
 CURRENT_DOCS=$(curl https://hmcts.github.io/reform-api-docs/specs/${REPO_NAME}.json)
-NEW_DOCS=$(curl http://localhost:PORTPORTPORT/v2/api-docs)
+NEW_DOCS=$(curl http://localhost:${SERVER_PORT}/v2/api-docs)
 
 docker-compose stop
 
