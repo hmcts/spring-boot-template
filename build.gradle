@@ -57,10 +57,17 @@ repositories {
   jcenter()
 }
 
+def versions = [
+  springfoxSwagger: '2.7.0'
+]
+
 dependencies {
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: springBootVersion
+
+  compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
+  compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
 
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging-spring', version: '1.2.1'
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging-httpcomponents', version: '1.2.1'
