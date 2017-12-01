@@ -13,7 +13,7 @@ cache:
   - $HOME/.gradle/wrapper/
 
 before_install:
-  - curl https://raw.githubusercontent.com/hmcts/reform-api-docs/master/bin/publish-swagger-docs.sh > publish-swagger-docs.sh
+#  - curl https://raw.githubusercontent.com/hmcts/reform-api-docs/master/bin/publish-swagger-docs.sh > publish-swagger-docs.sh
 
 script:
   - ./gradlew build
@@ -21,4 +21,4 @@ script:
 
 after_success:
   - ./gradlew jacocoTestReport
-  - test "$TRAVIS_BRANCH" = "master" && test "$TRAVIS_PULL_REQUEST" = "false" && sh ./publish-swagger-docs.sh
+#  - test "$TRAVIS_BRANCH" = "master" && test "$TRAVIS_PULL_REQUEST" = "false" && sh ./publish-swagger-docs.sh
