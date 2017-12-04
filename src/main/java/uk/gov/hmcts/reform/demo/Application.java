@@ -12,6 +12,8 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 @SuppressWarnings("HideUtilityClassConstructor") // Spring needs a constructor, its not a utility class
 public class Application {
 
+    public static final String BASE_PACKAGE_NAME = Application.class.getPackage().getName();
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
