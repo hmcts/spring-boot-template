@@ -20,5 +20,5 @@ services:
     volumes:
       - ./build/install/spring-boot-template:/opt/app/
     ports:
-      # TODO: change this mapping to map the port your application listens on
-      - 4550:4550
+      # check .env
+      - $SERVER_PORT:$SERVER_PORT
