@@ -1,4 +1,3 @@
----
 version: '2.1'
 
 services:
@@ -9,6 +8,8 @@ services:
         - http_proxy
         - https_proxy
         - no_proxy
+    image: docker.artifactory.reform.hmcts.net/reform/spring-boot-template-api
+    container_name: spring-boot-template-api
     environment:
       # these environment variables are used by java-logging library
       - ROOT_APPENDER
@@ -17,8 +18,6 @@ services:
       - REFORM_SERVICE_NAME
       - REFORM_TEAM
       - REFORM_ENVIRONMENT
-    volumes:
-      - ./build/install/spring-boot-template:/opt/app/
     ports:
       # check .env
       - $SERVER_PORT:$SERVER_PORT
