@@ -136,6 +136,36 @@ You should get a response similar to this:
   {"status":"UP","diskSpace":{"status":"UP","total":249644974080,"free":137188298752,"threshold":10485760}}
 ```
 
+### Alternative script to run application
+
+To skip all the setting up and building, just execute the following command:
+
+```bash
+./bin/run-in-docker.sh
+```
+
+For more information:
+
+```bash
+./bin/run-in-docker.sh -h
+```
+
+Script includes bare minimum environment variables necessary to start api instance. Whenever any variable is changed or any other script regarding docker image/container build, the suggested way to ensure all is cleaned up properly is by this command:
+
+```bash
+docker-compose rm
+```
+
+It clears stopped containers correctly. Might consider removing clutter of images too, especially the ones fiddled with:
+
+```bash
+docker images
+
+docker image rm <image-id>
+```
+
+There is no need to remove postgres and java or similar core images.
+
 ## Hystrix
 
 [Hystrix](https://github.com/Netflix/Hystrix/wiki) is a library that helps you control the interactions
