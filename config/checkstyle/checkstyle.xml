@@ -86,6 +86,7 @@
       <property name="allowNoEmptyLineBetweenFields" value="true"/>
     </module>
     <module name="SeparatorWrap">
+      <property name="id" value="SeparatorWrapDot"/>
       <property name="tokens" value="DOT"/>
       <property name="option" value="nl"/>
     </module>
@@ -183,7 +184,7 @@
     <module name="VariableDeclarationUsageDistance"/>
     <module name="CustomImportOrder">
       <property name="sortImportsInGroupAlphabetically" value="true"/>
-      <property name="separateLineBetweenGroups" value="false"/>
+      <property name="separateLineBetweenGroups" value="true"/>
       <property name="customImportOrderRules" value="THIRD_PARTY_PACKAGE###STANDARD_JAVA_PACKAGE###STATIC"/>
     </module>
     <module name="MethodParamPad"/>
