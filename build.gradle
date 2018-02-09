@@ -4,8 +4,8 @@ plugins {
   id 'pmd'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.4.RELEASE'
-  id 'org.springframework.boot' version '1.5.9.RELEASE'
-  id 'org.owasp.dependencycheck' version '3.1.0'
+  id 'org.springframework.boot' version '1.5.10.RELEASE'
+  id 'org.owasp.dependencycheck' version '3.1.1'
   id 'com.github.ben-manes.versions' version '0.17.0'
 }
 
@@ -65,23 +65,25 @@ repositories {
 }
 
 def versions = [
-  springBoot: plugins.getPlugin('org.springframework.boot').class.package.implementationVersion,
-  springfoxSwagger: '2.7.0'
+  reformLogging: '1.5.0',
+  springBoot: springBoot.class.package.implementationVersion,
+  springHystrix: '1.4.2.RELEASE',
+  springfoxSwagger: '2.8.0'
 ]
 
 dependencies {
-  compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBoot
-  compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBoot
-  compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: springBoot
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: versions.springBoot
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: versions.springBoot
 
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
   compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
 
-  compile group: 'uk.gov.hmcts.reform', name: 'java-logging-spring', version: '1.4.0'
-  compile group: 'uk.gov.hmcts.reform', name: 'java-logging-httpcomponents', version: '1.4.0'
+  compile group: 'uk.gov.hmcts.reform', name: 'java-logging-spring', version: versions.reformLogging
+  compile group: 'uk.gov.hmcts.reform', name: 'java-logging-httpcomponents', version: versions.reformLogging
   compile group: 'uk.gov.hmcts.reform', name: 'http-proxy-spring-boot-autoconfigure', version: '1.1.0'
-  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix', version: '1.4.0.RELEASE'
-  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix-dashboard', version: '1.4.0.RELEASE'
+  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix', version: versions.springHystrix
+  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix-dashboard', version: versions.springHystrix
 
-  testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBoot
+  testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
 }
