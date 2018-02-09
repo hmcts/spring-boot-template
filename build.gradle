@@ -60,20 +60,19 @@ dependencyCheck {
   suppressionFile = 'dependency-check-suppressions.xml'
 }
 
-def springBootVersion = plugins.getPlugin('org.springframework.boot').class.package.implementationVersion
-
 repositories {
   jcenter()
 }
 
 def versions = [
+  springBoot: plugins.getPlugin('org.springframework.boot').class.package.implementationVersion,
   springfoxSwagger: '2.7.0'
 ]
 
 dependencies {
-  compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
-  compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
-  compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: springBootVersion
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBoot
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBoot
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: springBoot
 
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
   compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
@@ -84,5 +83,5 @@ dependencies {
   compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix', version: '1.4.0.RELEASE'
   compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix-dashboard', version: '1.4.0.RELEASE'
 
-  testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
+  testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBoot
 }
