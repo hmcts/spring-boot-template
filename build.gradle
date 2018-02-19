@@ -64,6 +64,8 @@ repositories {
   jcenter()
 }
 
+// it is important to specify logback classic and core packages explicitly as libraries like spring boot
+// enforces it's own (older) version which is not recommended.
 def versions = [
   logback: '1.2.3',
   reformLogging: '1.5.0',
