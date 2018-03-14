@@ -94,7 +94,6 @@ dependencies {
   testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
 }
 
-// TODO: set the right name for your output jar. Must match the one specified in web.config.
 jar {
   archiveName 'spring-boot-template.jar'
 
