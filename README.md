@@ -6,7 +6,7 @@ TODO
 ## Purpose
 
 The purpose of this template is to speed up the creation of new Spring applications within HMCTS
-and help keep the same standards across multpile teams. If you need to create a new app, you can
+and help keep the same standards across multiple teams. If you need to create a new app, you can
 simply use this one as a starting point and build on top of it.
 
 ## What's inside
@@ -40,7 +40,7 @@ The template contains the following plugins:
 
     https://docs.gradle.org/current/userguide/pmd_plugin.html
 
-    Performs static code analysis to finds common programming flaws. Incuded in gradle `check` task.
+    Performs static code analysis to finds common programming flaws. Included in gradle `check` task.
 
 
   * jacoco
