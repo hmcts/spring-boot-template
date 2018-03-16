@@ -97,4 +97,8 @@ dependencies {
 // TODO: set the right name for your output jar. Must match the one specified in web.config.
 jar {
   archiveName 'spring-boot-template.jar'
+
+  manifest {
+    attributes('Implementation-Version': project.version.toString())
+  }
 }
