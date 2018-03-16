@@ -39,18 +39,22 @@ fi
 declare -a files_with_port=(.env Dockerfile README.md src/main/resources/application.yaml)
 declare -a files_with_slug=(build.gradle docker-compose.yml Dockerfile README.md web.config)
 
+# Replace port number
 for i in ${files_with_port[@]}
 do
   sed -i '' "s/4550/$port/g" ${i}
 done
 
+# Replace spring-boot-template slug
 for i in ${files_with_slug[@]}
 do
   sed -i '' "s/spring-boot-template/$slug/g" ${i}
 done
 
+# Replace demo package in all files under ./src
 find ./src -type f -print0 | xargs -0 sed -i '' "s/reform.demo/reform.$package/g"
 
+# Rename directory to provided package name
 cd src/main/java/uk/gov/hmcts/reform
 
 mv demo ${package}
@@ -65,9 +69,11 @@ cd $(dirname "$0")/..
 
 declare -a headers_to_delete=("Purpose" "What's inside" "Plugins" "Hystrix")
 
+# Clean-up README file
 for i in "${headers_to_delete[@]}"
 do
   perl -0777 -i -p0e "s/## $i.+?\n(## )/\$1/s" README.md
 done
 
+# Self-destruct
 rm bin/init.sh
