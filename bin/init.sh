@@ -75,5 +75,8 @@ do
   perl -0777 -i -p0e "s/## $i.+?\n(## )/\$1/s" README.md
 done
 
+# Rename title to slug
+sed -i '' "1s/.*/# $slug/" README.md
+
 # Self-destruct
 rm bin/init.sh
