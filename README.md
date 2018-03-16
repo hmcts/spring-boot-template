@@ -5,13 +5,14 @@
 ## Purpose
 
 The purpose of this template is to speed up the creation of new Spring applications within HMCTS
-and help keep the same standards across multpile teams. If you need to create a new app, you can
+and help keep the same standards across multiple teams. If you need to create a new app, you can
 simply use this one as a starting point and build on top of it.
 
 ## What's inside
 
 The template is a working application with a minimal setup. It contains:
  * application skeleton
+ * setup script to prepare project
  * common plugins and libraries
  * docker setup
  * swagger configuration for api documentation ([see how to publish your api documentation to shared repository](https://github.com/hmcts/reform-api-docs#publish-swagger-docs))
@@ -39,7 +40,7 @@ The template contains the following plugins:
 
     https://docs.gradle.org/current/userguide/pmd_plugin.html
 
-    Performs static code analysis to finds common programming flaws. Incuded in gradle `check` task.
+    Performs static code analysis to finds common programming flaws. Included in gradle `check` task.
 
 
   * jacoco
@@ -86,6 +87,10 @@ The template contains the following plugins:
     ```bash
       ./gradlew dependencyUpdates -Drevision=release
     ```
+
+## Setup
+
+Located in `./bin/init.sh`. Simply run and follow the explanation how to execute it.
 
 ## Building and deploying the application
 
