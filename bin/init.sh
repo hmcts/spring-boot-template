@@ -37,7 +37,7 @@ then
 fi
 
 declare -a files_with_port=(.env Dockerfile README.md src/main/resources/application.yaml)
-declare -a files_with_slug=(build.gradle docker-compose.yml Dockerfile README.md web.config)
+declare -a files_with_slug=(build.gradle docker-compose.yml Dockerfile README.md web.config, src/main/uk/gov/hmcts/reform/demo/controllers/HelloWorldEndpoint.java)
 
 # Replace port number
 for i in ${files_with_port[@]}
