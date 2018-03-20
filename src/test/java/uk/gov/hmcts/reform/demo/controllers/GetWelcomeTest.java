@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest
-public class HelloWorldTest {
+public class GetWelcomeTest {
 
     @Autowired
     private MockMvc mockMvc;

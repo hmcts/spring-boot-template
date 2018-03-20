@@ -10,10 +10,10 @@ import static org.springframework.http.ResponseEntity.ok;
  * Default endpoints per application.
  */
 @RestController
-public class HelloWorldEndpoint {
+public class RootController {
 
     /**
-     * Root endpoint.
+     * Root GET endpoint.
      *
      * <p>Azure application service has a hidden feature of making requests to root endpoint when
      * "Always On" is turned on.
@@ -22,7 +22,7 @@ public class HelloWorldEndpoint {
      * @return Welcome message from the service.
      */
     @GetMapping
-    public ResponseEntity<String> helloWorld() {
+    public ResponseEntity<String> welcome() {
         return ok("Welcome to spring-boot-template");
     }
 }
