@@ -4,3 +4,30 @@ server:
 management:
   security:
     enabled: ${MANAGEMENT_SECURITY_ENABLED:true}
+
+#If you use a database then uncomment below lines and update db properties accordingly leaving tomcat connection settings unchanged.
+spring:
+  application:
+    name: Spring Boot Template
+#  datasource:
+#      url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+#      username: ${DB_USER_NAME}
+#      password: ${DB_PASSWORD}
+#      properties:
+#        charSet: UTF-8
+#      tomcat:
+#        max-active: 10
+#        max-idle: 10
+#        min-idle: 2
+#        max-wait: 10000
+#        test-on-borrow: true
+#        test-on-connect: true
+#        test-on-idle: true
+#        validation-query: "SELECT 1"
+#        time-between-eviction-runs-millis: 10000
+#        test-while-idle: true
+#        test-on-return: true
+#        remove-abandoned: true
+#        remove-abandoned-timeout: 60
+#        log-abandoned: true
+#        abandon-when-percentage-full: 0
