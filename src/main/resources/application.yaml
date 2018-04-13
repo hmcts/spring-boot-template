@@ -22,7 +22,6 @@ spring:
 #        max-wait: 10000
 #        test-on-borrow: true
 #        test-on-connect: true
-#        test-on-idle: true
 #        validation-query: "SELECT 1"
 #        time-between-eviction-runs-millis: 10000
 #        test-while-idle: true
