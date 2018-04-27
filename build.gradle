@@ -80,6 +80,13 @@ dependencyManagement {
       entry 'logback-core'
       entry 'logback-classic'
     }
+    // the url pattern of "" is not correctly handled in tomcat
+    // it is possible for unauthorised users to gain access to web application resources that should have been protected
+    // not bumping tomcat-annotations-api as it introduces way more vulnerabilities than 8.5.27
+    dependencySet(group: 'org.apache.tomcat.embed', version: '8.5.29') {
+      entry 'tomcat-embed-core'
+      entry 'tomcat-embed-websocket'
+    }
   }
 }
 
