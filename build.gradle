@@ -67,20 +67,26 @@ repositories {
 // it is important to specify logback classic and core packages explicitly as libraries like spring boot
 // enforces it's own (older) version which is not recommended.
 def versions = [
-  logback: '1.2.3',
   reformLogging: '2.2.1',
   springBoot: springBoot.class.package.implementationVersion,
   springHystrix: '1.4.4.RELEASE',
   springfoxSwagger: '2.9.0'
 ]
 
+dependencyManagement {
+  dependencies {
+    // spring boot drags in 1.1.11 and `java-logging` already is on 1.2.3
+    dependencySet(group: 'ch.qos.logback', version: '1.2.3') {
+      entry 'logback-core'
+      entry 'logback-classic'
+    }
+  }
+}
+
 dependencies {
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: versions.springBoot
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: versions.springBoot
-
-  compile group: 'ch.qos.logback', name: 'logback-classic', version: versions.logback
-  compile group: 'ch.qos.logback', name: 'logback-core', version: versions.logback
 
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
   compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
