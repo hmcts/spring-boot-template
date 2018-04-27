@@ -3,9 +3,9 @@ plugins {
   id 'checkstyle'
   id 'pmd'
   id 'jacoco'
-  id 'io.spring.dependency-management' version '1.0.4.RELEASE'
+  id 'io.spring.dependency-management' version '1.0.5.RELEASE'
   id 'org.springframework.boot' version '1.5.10.RELEASE'
-  id 'org.owasp.dependencycheck' version '3.1.1'
+  id 'org.owasp.dependencycheck' version '3.1.2'
   id 'com.github.ben-manes.versions' version '0.17.0'
 }
 
@@ -17,7 +17,7 @@ targetCompatibility = 1.8
 
 checkstyle {
   maxWarnings = 0
-  toolVersion = '8.8'
+  toolVersion = '8.9'
   // need to set configDir to rootDir otherwise submodule will use submodule/config/checkstyle
   configDir = new File(rootDir, 'config/checkstyle')
 }
@@ -39,7 +39,7 @@ jacocoTestReport {
   reports {
     xml.enabled = true
     csv.enabled = false
-    xml.destination file("${project.buildDir}/reports/jacoco/test/jacocoTestReport.xml")
+    xml.destination = file("${project.buildDir}/reports/jacoco/test/jacocoTestReport.xml")
   }
 }
 
@@ -72,10 +72,10 @@ repositories {
 // enforces it's own (older) version which is not recommended.
 def versions = [
   logback: '1.2.3',
-  reformLogging: '1.5.0',
+  reformLogging: '2.2.1',
   springBoot: springBoot.class.package.implementationVersion,
-  springHystrix: '1.4.2.RELEASE',
-  springfoxSwagger: '2.8.0'
+  springHystrix: '1.4.4.RELEASE',
+  springfoxSwagger: '2.9.0'
 ]
 
 dependencies {
@@ -89,8 +89,7 @@ dependencies {
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
   compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
 
-  compile group: 'uk.gov.hmcts.reform', name: 'java-logging-spring', version: versions.reformLogging
-  compile group: 'uk.gov.hmcts.reform', name: 'java-logging-httpcomponents', version: versions.reformLogging
+  compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformLogging
   compile group: 'uk.gov.hmcts.reform', name: 'http-proxy-spring-boot-autoconfigure', version: '1.1.0'
   compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix', version: versions.springHystrix
   compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix-dashboard', version: versions.springHystrix
@@ -99,7 +98,7 @@ dependencies {
 }
 
 jar {
-  archiveName 'spring-boot-template.jar'
+  archiveName = 'spring-boot-template.jar'
 
   manifest {
     attributes('Implementation-Version': project.version.toString())
