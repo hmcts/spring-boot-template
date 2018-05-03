@@ -131,6 +131,11 @@ def versions = [
 ]
 
 dependencyManagement {
+  dependencies {
+    dependencySet(group: 'com.google.guava', version: '20.0') {
+      entry 'guava'
+    }
+  }
   imports {
     mavenBom "org.springframework.boot:spring-boot-dependencies:${versions.springBoot}"
     mavenBom "org.springframework.cloud:spring-cloud-dependencies:${versions.springCloud}"
