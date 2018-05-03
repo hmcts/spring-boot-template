@@ -4,7 +4,7 @@ plugins {
   id 'pmd'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.5.RELEASE'
-  id 'org.springframework.boot' version '1.5.10.RELEASE'
+  id 'org.springframework.boot' version '2.0.1.RELEASE'
   id 'org.owasp.dependencycheck' version '3.1.2'
   id 'com.github.ben-manes.versions' version '0.17.0'
 }
@@ -14,6 +14,58 @@ version = '0.0.1'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+sourceSets {
+  functionalTest {
+    java {
+      compileClasspath += main.output
+      runtimeClasspath += main.output
+      srcDir file('src/functionalTest/java')
+    }
+    resources.srcDir file('src/functionalTest/resources')
+  }
+
+  integrationTest {
+    java {
+      compileClasspath += main.output
+      runtimeClasspath += main.output
+      srcDir file('src/integrationTest/java')
+    }
+    resources.srcDir file('src/integrationTest/resources')
+  }
+
+  smokeTest {
+    java {
+      compileClasspath += main.output
+      runtimeClasspath += main.output
+      srcDir file('src/smokeTest/java')
+    }
+    resources.srcDir file('src/smokeTest/resources')
+  }
+}
+
+tasks.withType(JavaCompile) {
+  options.compilerArgs << "-Xlint:unchecked" << "-Werror"
+}
+
+task functional(type: Test, description: 'Runs the functional tests.', group: 'Verification') {
+  testClassesDirs = sourceSets.functionalTest.output.classesDirs
+  classpath = sourceSets.functionalTest.runtimeClasspath
+}
+
+task integration(type: Test, description: 'Runs the integration tests.', group: 'Verification') {
+  testClassesDirs = sourceSets.integrationTest.output.classesDirs
+  classpath = sourceSets.integrationTest.runtimeClasspath
+
+  // set your environment variables here
+  // environment("APPINSIGHTS_INSTRUMENTATIONKEY", "test-key")
+}
+
+task smoke(type: Test) {
+  description = "Runs Smoke Tests"
+  testClassesDirs = sourceSets.smokeTest.output.classesDirs
+  classpath = sourceSets.smokeTest.runtimeClasspath
+}
 
 checkstyle {
   maxWarnings = 0
@@ -25,13 +77,13 @@ checkstyle {
 pmd {
   toolVersion = "5.8.1"
   ignoreFailures = true
-  sourceSets = [sourceSets.main, sourceSets.test]
+  sourceSets = [sourceSets.main, sourceSets.test, sourceSets.functionalTest, sourceSets.integrationTest, sourceSets.smokeTest]
   reportsDir = file("$project.buildDir/reports/pmd")
   ruleSetFiles = files("config/pmd/ruleset.xml")
 }
 
 jacocoTestReport {
-  executionData(test)
+  executionData(test, integration)
   reports {
     xml.enabled = true
     csv.enabled = false
@@ -62,39 +114,26 @@ dependencyCheck {
 
 repositories {
   jcenter()
+  // remove once spring sorts out their cloud artifact to proper version
+  maven {
+    url "https://repo.spring.io/libs-milestone"
+  }
 }
 
 // it is important to specify logback classic and core packages explicitly as libraries like spring boot
 // enforces it's own (older) version which is not recommended.
 def versions = [
-  reformLogging: '2.2.1',
+  reformLogging: '3.0.1',
   springBoot: springBoot.class.package.implementationVersion,
+  springCloud: 'Finchley.M9',
   springHystrix: '1.4.4.RELEASE',
   springfoxSwagger: '2.9.0'
 ]
 
 dependencyManagement {
-  dependencies {
-    // spring boot drags in 1.1.11 and `java-logging` already is on 1.2.3
-    dependencySet(group: 'ch.qos.logback', version: '1.2.3') {
-      entry 'logback-core'
-      entry 'logback-classic'
-    }
-    // spring boot dependency management plugin downgrades
-    // hystrix related libraries use 2.4.3 and not clear if plan to upgrade
-    // bump to 2.9.5 because of https://nvd.nist.gov/vuln/detail/CVE-2018-7489
-    dependencySet(group: 'com.fasterxml.jackson.core', version: '2.9.5') {
-      entry 'jackson-annotations'
-      entry 'jackson-core'
-      entry 'jackson-databind'
-    }
-    // the url pattern of "" is not correctly handled in tomcat
-    // it is possible for unauthorised users to gain access to web application resources that should have been protected
-    // not bumping tomcat-annotations-api as it introduces way more vulnerabilities than 8.5.27
-    dependencySet(group: 'org.apache.tomcat.embed', version: '8.5.29') {
-      entry 'tomcat-embed-core'
-      entry 'tomcat-embed-websocket'
-    }
+  imports {
+    mavenBom "org.springframework.boot:spring-boot-dependencies:${versions.springBoot}"
+    mavenBom "org.springframework.cloud:spring-cloud-dependencies:${versions.springCloud}"
   }
 }
 
@@ -107,14 +146,22 @@ dependencies {
   compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
 
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformLogging
-  compile group: 'uk.gov.hmcts.reform', name: 'http-proxy-spring-boot-autoconfigure', version: '1.1.0'
-  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix', version: versions.springHystrix
-  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix-dashboard', version: versions.springHystrix
+  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: versions.springHystrix
+  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix-dashboard', version: versions.springHystrix
 
   testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
+
+  integrationTestCompile sourceSets.main.runtimeClasspath
+  integrationTestCompile sourceSets.test.runtimeClasspath
+
+  functionalTestCompile sourceSets.main.runtimeClasspath
+
+  smokeTestCompile sourceSets.main.runtimeClasspath
 }
 
-jar {
+mainClassName = 'uk.gov.hmcts.reform.demo.Application'
+
+bootJar {
   archiveName = 'spring-boot-template.jar'
 
   manifest {
