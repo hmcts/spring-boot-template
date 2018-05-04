@@ -41,6 +41,7 @@ done
 
 # Replace demo package in all files under ./src
 find ./src -type f -print0 | xargs -0 sed -i '' "s/reform.demo/reform.$package/g"
+sed -i '' "s/reform.demo/reform.$package/g" build.gradle
 
 # Rename directory to provided package name
 cd src/main/java/uk/gov/hmcts/reform
