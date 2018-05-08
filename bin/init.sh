@@ -44,17 +44,9 @@ find ./src -type f -print0 | xargs -0 sed -i '' "s/reform.demo/reform.$package/g
 sed -i '' "s/reform.demo/reform.$package/g" build.gradle
 
 # Rename directory to provided package name
-cd src/main/java/uk/gov/hmcts/reform
-
-mv demo ${package}
-
-cd $(dirname "$0")/..
-
-cd src/test/java/uk/gov/hmcts/reform
-
-mv demo ${package}
-
-cd $(dirname "$0")/..
+mv src/integrationTest/java/uk/gov/hmcts/reform/demo src/integrationTest/java/uk/gov/hmcts/reform/${package}
+mv src/main/java/uk/gov/hmcts/reform/demo src/main/java/uk/gov/hmcts/reform/${package}
+mv src/test/java/uk/gov/hmcts/reform/demo src/test/java/uk/gov/hmcts/reform/${package}
 
 declare -a headers_to_delete=("Purpose" "What's inside" "Plugins" "Hystrix")
 
