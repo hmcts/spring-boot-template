@@ -17,7 +17,7 @@ slug=${git_slug%.*}
 
 read -p "Repo slug: (leave blank for \"$slug\") " new_slug
 
-cd $(dirname "$0")/..
+cd $(realpath $(dirname "$0")/..)
 
 if [[ ! -z  "$new_slug"  ]]
 then
