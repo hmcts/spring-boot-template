@@ -48,7 +48,7 @@ mv src/integrationTest/java/uk/gov/hmcts/reform/demo src/integrationTest/java/uk
 mv src/main/java/uk/gov/hmcts/reform/demo src/main/java/uk/gov/hmcts/reform/${package}
 mv src/test/java/uk/gov/hmcts/reform/demo src/test/java/uk/gov/hmcts/reform/${package}
 
-declare -a headers_to_delete=("Purpose" "What's inside" "Plugins" "Hystrix")
+declare -a headers_to_delete=("Purpose" "What's inside" "Plugins" "Setup" "Hystrix")
 
 # Clean-up README file
 for i in "${headers_to_delete[@]}"
