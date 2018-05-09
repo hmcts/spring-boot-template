@@ -17,7 +17,7 @@ slug=${git_slug%.*}
 
 read -p "Repo slug: (leave blank for \"$slug\") " new_slug
 
-cd $(dirname "$0")/..
+cd $(realpath $(dirname "$0")/..)
 
 if [[ ! -z  "$new_slug"  ]]
 then
@@ -25,7 +25,7 @@ then
 fi
 
 declare -a files_with_port=(.env Dockerfile README.md src/main/resources/application.yaml)
-declare -a files_with_slug=(build.gradle docker-compose.yml Dockerfile README.md web.config src/main/uk/gov/hmcts/reform/demo/controllers/RootController.java)
+declare -a files_with_slug=(build.gradle docker-compose.yml Dockerfile README.md web.config ./src/main/java/uk/gov/hmcts/reform/demo/controllers/RootController.java)
 
 # Replace port number
 for i in ${files_with_port[@]}
@@ -44,19 +44,11 @@ find ./src -type f -print0 | xargs -0 sed -i '' "s/reform.demo/reform.$package/g
 sed -i '' "s/reform.demo/reform.$package/g" build.gradle
 
 # Rename directory to provided package name
-cd src/main/java/uk/gov/hmcts/reform
+mv src/integrationTest/java/uk/gov/hmcts/reform/demo src/integrationTest/java/uk/gov/hmcts/reform/${package}
+mv src/main/java/uk/gov/hmcts/reform/demo src/main/java/uk/gov/hmcts/reform/${package}
+mv src/test/java/uk/gov/hmcts/reform/demo src/test/java/uk/gov/hmcts/reform/${package}
 
-mv demo ${package}
-
-cd $(dirname "$0")/..
-
-cd src/test/java/uk/gov/hmcts/reform
-
-mv demo ${package}
-
-cd $(dirname "$0")/..
-
-declare -a headers_to_delete=("Purpose" "What's inside" "Plugins" "Hystrix")
+declare -a headers_to_delete=("Purpose" "What's inside" "Plugins" "Setup" "Hystrix")
 
 # Clean-up README file
 for i in "${headers_to_delete[@]}"

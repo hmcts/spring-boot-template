@@ -110,7 +110,7 @@ To build the project execute the following command:
 Create the image of the application by executing the following command:
 
 ```bash
-  ./gradlew installDist
+  ./gradlew assemble
 ```
 
 Create docker image:
