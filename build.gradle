@@ -4,7 +4,7 @@ plugins {
   id 'pmd'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.5.RELEASE'
-  id 'org.springframework.boot' version '2.0.1.RELEASE'
+  id 'org.springframework.boot' version '2.0.2.RELEASE'
   id 'org.owasp.dependencycheck' version '3.1.2'
   id 'com.github.ben-manes.versions' version '0.17.0'
 }
@@ -125,7 +125,7 @@ repositories {
 def versions = [
   reformLogging: '3.0.1',
   springBoot: springBoot.class.package.implementationVersion,
-  springCloud: 'Finchley.M9',
+  springCloud: 'Finchley.RC1',
   springHystrix: '1.4.4.RELEASE',
   springfoxSwagger: '2.9.0'
 ]
