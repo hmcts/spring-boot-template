@@ -24,6 +24,7 @@
   </rule>
   <rule ref="category/java/design.xml">
     <exclude name="UseUtilityClass"/>
+    <exclude name="LawOfDemeter"/><!-- does not apply to hmcts code style -->
     <exclude name="LoosePackageCoupling"/>
   </rule>
   <rule ref="category/java/design.xml/SignatureDeclareThrowsException">
