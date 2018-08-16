@@ -22,6 +22,7 @@ before_install:
 script:
   - ./gradlew test
   - ./gradlew integration
+  - ./gradlew dependencyCheckAnalyze -DdependencyCheck.failBuild=true
 
 after_success:
   - ./gradlew jacocoTestReport
