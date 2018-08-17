@@ -18,8 +18,6 @@ The template is a working application with a minimal setup. It contains:
  * swagger configuration for api documentation ([see how to publish your api documentation to shared repository](https://github.com/hmcts/reform-api-docs#publish-swagger-docs))
  * code quality tools already set up
  * integration with Travis CI
- * Hystrix circuit breaker enabled
- * Hystrix dashboard
  * MIT license and contribution information
 
 The application exposes health endpoint (http://localhost:4550/health) and metrics endpoint
@@ -169,9 +167,13 @@ docker images
 docker image rm <image-id>
 ```
 
-There is no need to remove postgres and java or similar core images.
 
-## Hystrix
+# next steep
+
+## Adding persistence  
+
+
+## Adding Hystrix (recommended)
 
 [Hystrix](https://github.com/Netflix/Hystrix/wiki) is a library that helps you control the interactions
 between your application and other services by adding latency tolerance and fault tolerance logic. It does this
