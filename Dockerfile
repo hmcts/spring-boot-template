@@ -1,6 +1,8 @@
 FROM openjdk:8-jre
 
-COPY build/install/spring-boot-template /opt/app/
+COPY build/bootScripts/spring-boot-template /opt/app/bin/
+
+COPY build/libs/spring-boot-template.jar /opt/app/lib/
 
 WORKDIR /opt/app
 

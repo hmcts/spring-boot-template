@@ -4,31 +4,72 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
 
-  <description>
-    HMCTS PMD rule set
-  </description>
+  <description>HMCTS PMD rule set</description>
 
-  <rule ref="rulesets/java/basic.xml"/>
-  <rule ref="rulesets/java/braces.xml"/>
-  <rule ref="rulesets/java/design.xml">
-    <exclude name="UseUtilityClass"/>
-    <exclude name="ConfusingTernary"/>
+  <rule ref="category/java/bestpractices.xml">
+    <exclude name="GuardLogStatement" />
+    <exclude name="JUnitTestContainsTooManyAsserts" />
   </rule>
-  <rule ref="rulesets/java/empty.xml"/>
-  <rule ref="rulesets/java/imports.xml">
-    <exclude name="TooManyStaticImports"/>
+  <rule ref="category/java/codestyle.xml">
+    <exclude name="AtLeastOneConstructor" />
+    <exclude name="LocalVariableCouldBeFinal" />
+    <exclude name="LongVariable" />
+    <exclude name="MethodArgumentCouldBeFinal" />
+    <exclude name="OnlyOneReturn" />
+    <exclude name="TooManyStaticImports" />
   </rule>
-  <rule ref="rulesets/java/optimizations.xml">
-    <exclude name="MethodArgumentCouldBeFinal"/>
-    <exclude name="LocalVariableCouldBeFinal"/>
-  </rule>
-  <rule ref="rulesets/java/typeresolution.xml"/>
-  <rule ref="rulesets/java/typeresolution.xml/SignatureDeclareThrowsException">
+  <rule ref="category/java/codestyle.xml/ClassNamingConventions">
     <properties>
-      <property name="IgnoreJUnitCompletely" value="true"/>
+      <!-- same as any other class -->
+      <property name="utilityClassPattern" value="[A-Z][a-zA-Z]+" />
     </properties>
   </rule>
-  <rule ref="rulesets/java/unnecessary.xml"/>
-  <rule ref="rulesets/java/unusedcode.xml"/>
+  <rule ref="category/java/codestyle.xml/MethodNamingConventions">
+    <properties>
+      <property name="junit4TestPattern" value="[a-z][a-zA-Z0-9_]+" />
+    </properties>
+  </rule>
+  <rule ref="category/java/codestyle.xml/ShortVariable">
+    <properties>
+      <property name="minimum" value="2" />
+    </properties>
+  </rule>
+  <rule ref="category/java/codestyle.xml/VariableNamingConventions">
+    <properties>
+      <property name="violationSuppressRegex" value=".*'log'.*" />
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml">
+    <exclude name="AvoidCatchingGenericException" />
+    <exclude name="UseUtilityClass" />
+    <exclude name="LoosePackageCoupling" />
+    <exclude name="DataClass" />
+  </rule>
+  <rule ref="category/java/design.xml/ExcessiveImports">
+    <properties>
+      <property name="minimum" value="35" /><!-- should be reduced -->
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/LawOfDemeter">
+    <properties>
+      <property name="violationSuppressRegex" value="(.*method chain calls.*|.*object not created locally.*)" />
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/SignatureDeclareThrowsException">
+    <properties>
+      <property name="IgnoreJUnitCompletely" value="true" />
+    </properties>
+  </rule>
+  <rule ref="category/java/documentation.xml">
+    <exclude name="CommentRequired" />
+    <exclude name="CommentSize" />
+    <exclude name="UncommentedEmptyMethodBody" />
+  </rule>
+  <rule ref="category/java/errorprone.xml">
+    <exclude name="BeanMembersShouldSerialize" />
+  </rule>
+  <rule ref="category/java/multithreading.xml" />
+  <rule ref="category/java/performance.xml" />
+  <rule ref="category/java/security.xml" />
 
 </ruleset>
