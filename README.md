@@ -18,8 +18,6 @@ The template is a working application with a minimal setup. It contains:
  * swagger configuration for api documentation ([see how to publish your api documentation to shared repository](https://github.com/hmcts/reform-api-docs#publish-swagger-docs))
  * code quality tools already set up
  * integration with Travis CI
- * Hystrix circuit breaker enabled
- * Hystrix dashboard
  * MIT license and contribution information
 
 The application exposes health endpoint (http://localhost:4550/health) and metrics endpoint
@@ -169,22 +167,26 @@ docker images
 docker image rm <image-id>
 ```
 
-There is no need to remove postgres and java or similar core images.
 
-## Hystrix
+## next steep
+
+### Adding persistence  
+
+
+### Adding Hystrix (recommended)
 
 [Hystrix](https://github.com/Netflix/Hystrix/wiki) is a library that helps you control the interactions
 between your application and other services by adding latency tolerance and fault tolerance logic. It does this
 by isolating points of access between the services, stopping cascading failures across them,
 and providing fallback options. We recommend you to use Hystrix in your application if it calls any services.
 
-### Hystrix circuit breaker
+#### Hystrix circuit breaker
 
 This template API has [Hystrix Circuit Breaker](https://github.com/Netflix/Hystrix/wiki/How-it-Works#circuit-breaker)
 already enabled. It monitors and manages all the`@HystrixCommand` or `HystrixObservableCommand` annotated methods
 inside `@Component` or `@Service` annotated classes.
 
-### Hystrix dashboard
+#### Hystrix dashboard
 
 When this API is running, you can monitor Hystrix metrics in real time using
 [Hystrix Dashboard](https://github.com/Netflix/Hystrix/wiki/Dashboard).
@@ -193,7 +195,7 @@ as the Hystrix event stream URL. Keep in mind that you'll only see data once som
 of your Hystrix commands have been executed. Otherwise *'Loading...'* message will be displayed
 on the monitoring page.
 
-### Other
+#### Other
 
 Hystrix offers much more than Circuit Breaker pattern implementation or command monitoring.
 Here are some other functionalities it provides:
