@@ -21,7 +21,7 @@ public class RootController {
      *
      * @return Welcome message from the service.
      */
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<String> welcome() {
         return ok("Welcome to spring-boot-template");
     }
