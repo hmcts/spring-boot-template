@@ -1,0 +1,12 @@
+@Library("Infrastructure")
+
+def type = "java"
+def product = "rpe"
+def component = "spring-boot-template"
+
+node {
+  sh "env"
+}
+
+//withPipeline(type, product, component) {
+//}
