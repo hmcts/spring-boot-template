@@ -1,12 +1,20 @@
 @Library("Infrastructure")
 
-def type = "java"
-def product = "rpe"
-def component = "spring-boot-template"
-
 node {
-  sh "env"
+  stage('Checkout') {
+   deleteDir()
+   checkout scm
+  }
+  stage('Sonar') {
+    withSonarQubeEnv("SonarQube") {
+      sh "./gradlew --info sonarqube"
+    }
+
+    def qg = waitForQualityGate()
+    if (qg.status != 'OK') {
+      error "Pipeline aborted due to quality gate failure: ${qg.status}"
+    }
+  }
+
 }
 
-//withPipeline(type, product, component) {
-//}

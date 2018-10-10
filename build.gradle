@@ -7,6 +7,7 @@ plugins {
   id 'org.springframework.boot' version '2.0.3.RELEASE'
   id 'org.owasp.dependencycheck' version '3.2.1'
   id 'com.github.ben-manes.versions' version '0.20.0'
+  id 'org.sonarqube' version '2.6.2'
 }
 
 group = 'uk.gov.hmcts.reform'
@@ -14,6 +15,14 @@ version = '0.0.1'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+sonarqube {
+  properties {
+    property "sonar.projectName", "Reform :: Spring Boot Template"
+    property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
+  }
+}
+
 
 sourceSets {
   functionalTest {
