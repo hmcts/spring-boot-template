@@ -1,4 +1,4 @@
-@Library("Infrastructure")
+#!groovy
 
 node {
   stage('Checkout') {
