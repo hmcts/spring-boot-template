@@ -16,11 +16,15 @@ version = '0.0.1'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+project.tasks['sonarqube'].dependsOn test, integration
+
 sonarqube {
   properties {
     property "sonar.projectName", "Reform :: spring-boot-template"
     property "sonar.projectKey", "uk.gov.hmcts.reform.demo:spring-boot-template"
     property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
+    property "sonar.jacoco.itReportPath", "${project.buildDir}/jacoco/integration.exec"
+
   }
 }
 
