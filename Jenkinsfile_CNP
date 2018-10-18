@@ -1,0 +1,15 @@
+#!groovy
+
+node {
+  stage('Checkout') {
+   deleteDir()
+   checkout scm
+  }
+  stage('Sonar') {
+    withSonarQubeEnv("SonarQube") {
+      sh "./gradlew --info sonarqube"
+    }
+  }
+
+}
+

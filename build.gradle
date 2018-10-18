@@ -16,6 +16,15 @@ version = '0.0.1'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+sonarqube {
+  properties {
+    property "sonar.projectName", "Reform :: Spring Boot Template"
+    property "sonar.projectKey", "uk.gov.hmcts.reform:spring-boot-template"
+    property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
+  }
+}
+
+
 sourceSets {
   functionalTest {
     java {
