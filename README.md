@@ -91,6 +91,10 @@ The template contains the following plugins:
 
 Located in `./bin/init.sh`. Simply run and follow the explanation how to execute it.
 
+## Notes
+
+Since Spring Boot 2.1 bean overriding is disabled. If you want to enable it you will need to set `spring.main.allow-bean-definition-overriding` to `true`
+
 ## Building and deploying the application
 
 ### Building the application
