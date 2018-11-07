@@ -4,7 +4,7 @@ plugins {
   id 'pmd'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.6.RELEASE'
-  id 'org.springframework.boot' version '2.0.3.RELEASE'
+  id 'org.springframework.boot' version '2.0.6.RELEASE'
   id 'org.owasp.dependencycheck' version '3.3.4'
   id 'com.github.ben-manes.versions' version '0.20.0'
   id 'org.sonarqube' version '2.6.2'
@@ -147,7 +147,7 @@ dependencies {
   compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
 
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformLogging
-  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.0.1.RELEASE'
+  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.0.2.RELEASE'
 
   testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
 
