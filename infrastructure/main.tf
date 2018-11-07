@@ -16,7 +16,7 @@ module "spring-boot-template" {
   common_tags         = "${var.common_tags}"
 
   app_settings = {
-    LOGBACK_REQUIRE_ALERT_LEVEL = false
-    LOGBACK_REQUIRE_ERROR_CODE  = false
+    LOGBACK_REQUIRE_ALERT_LEVEL = "false"
+    LOGBACK_REQUIRE_ERROR_CODE  = "false"
   }
 }
