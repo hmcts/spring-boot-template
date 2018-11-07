@@ -3,9 +3,9 @@ plugins {
   id 'checkstyle'
   id 'pmd'
   id 'jacoco'
-  id 'io.spring.dependency-management' version '1.0.5.RELEASE'
-  id 'org.springframework.boot' version '2.0.3.RELEASE'
-  id 'org.owasp.dependencycheck' version '3.2.1'
+  id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+  id 'org.springframework.boot' version '2.0.6.RELEASE'
+  id 'org.owasp.dependencycheck' version '3.3.4'
   id 'com.github.ben-manes.versions' version '0.20.0'
   id 'org.sonarqube' version '2.6.2'
 }
@@ -70,14 +70,13 @@ task smoke(type: Test) {
 
 checkstyle {
   maxWarnings = 0
-  toolVersion = '8.10.1'
+  toolVersion = '8.14'
   // need to set configDir to rootDir otherwise submodule will use submodule/config/checkstyle
   configDir = new File(rootDir, 'config/checkstyle')
 }
 
 pmd {
-  toolVersion = "6.5.0"
-  ignoreFailures = true
+  toolVersion = "6.9.0"
   sourceSets = [sourceSets.main, sourceSets.test, sourceSets.functionalTest, sourceSets.integrationTest, sourceSets.smokeTest]
   reportsDir = file("$project.buildDir/reports/pmd")
   ruleSetFiles = files("config/pmd/ruleset.xml")
@@ -132,7 +131,7 @@ repositories {
 // it is important to specify logback classic and core packages explicitly as libraries like spring boot
 // enforces it's own (older) version which is not recommended.
 def versions = [
-  reformLogging: '3.0.1',
+  reformLogging: '3.0.2',
   springBoot: springBoot.class.package.implementationVersion,
   springfoxSwagger: '2.9.2'
 ]
@@ -147,7 +146,7 @@ dependencies {
   compile group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
 
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformLogging
-  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.0.1.RELEASE'
+  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.0.2.RELEASE'
 
   testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
 

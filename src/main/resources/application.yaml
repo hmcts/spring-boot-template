@@ -11,26 +11,19 @@ spring:
   application:
     name: Spring Boot Template
 #  datasource:
-#    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}${DB_OPTIONS:}
 #    username: ${DB_USER_NAME}
 #    password: ${DB_PASSWORD}
 #    properties:
 #      charSet: UTF-8
-#    tomcat:
-#      max-active: 10
-#      max-idle: 10
-#      min-idle: 2
-#      max-wait: 10000
-#      test-on-borrow: true
-#      test-on-connect: true
-#      validation-query: "SELECT 1"
-#      time-between-eviction-runs-millis: 10000
-#      test-while-idle: true
-#      test-on-return: true
-#      remove-abandoned: true
-#      remove-abandoned-timeout: 60
-#      log-abandoned: true
-#      abandon-when-percentage-full: 0
+#    hikari:
+#      minimumIdle: 2
+#      maximumPoolSize: 10
+#      idleTimeout: 10000
+#      poolName: {to-be-defined}HikariCP
+#      maxLifetime: 7200000
+#      connectionTimeout: 30000
 #  jpa:
 #    properties:
 #      hibernate:
