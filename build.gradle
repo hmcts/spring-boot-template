@@ -131,6 +131,7 @@ repositories {
 // it is important to specify logback classic and core packages explicitly as libraries like spring boot
 // enforces it's own (older) version which is not recommended.
 def versions = [
+  junit: '5.3.1',
   reformLogging: '3.0.2',
   springBoot: springBoot.class.package.implementationVersion,
   springfoxSwagger: '2.9.2'
@@ -148,6 +149,10 @@ dependencies {
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformLogging
   compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.0.2.RELEASE'
 
+  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.junit
+  testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: versions.junit
+  testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.junit
+
   testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot
 
   integrationTestCompile sourceSets.main.runtimeClasspath
@@ -156,6 +161,11 @@ dependencies {
   functionalTestCompile sourceSets.main.runtimeClasspath
 
   smokeTestCompile sourceSets.main.runtimeClasspath
+}
+
+test {
+  useJUnitPlatform()
+  failFast = true
 }
 
 mainClassName = 'uk.gov.hmcts.reform.demo.Application'
