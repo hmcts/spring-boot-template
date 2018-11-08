@@ -6,7 +6,7 @@ management:
     web:
       base-path: /
 
-#If you use a database then uncomment below lines and update db properties accordingly leaving tomcat connection settings unchanged.
+#If you use a database then uncomment below lines and update db properties accordingly
 spring:
   application:
     name: Spring Boot Template
