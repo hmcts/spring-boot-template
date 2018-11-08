@@ -30,22 +30,22 @@ declare -a files_with_slug=(build.gradle docker-compose.yml Dockerfile README.md
 # Replace port number
 for i in ${files_with_port[@]}
 do
-  sed -i '' "s/4550/$port/g" ${i}
+  perl -i -pe "s/4550/$port/g" ${i}
 done
 
 # Replace spring-boot-template slug
 for i in ${files_with_slug[@]}
 do
-  sed -i '' "s/spring-boot-template/$slug/g" ${i}
+  perl -i -pe "s/spring-boot-template/$slug/g" ${i}
 done
 
 # Replace demo package in all files under ./src
-find ./src -type f -print0 | xargs -0 sed -i '' "s/reform.demo/reform.$package/g"
-sed -i '' "s/reform.demo/reform.$package/g" build.gradle
+find ./src -type f -print0 | xargs -0 perl -i -pe "s/reform.demo/reform.$package/g"
+perl -i -pe "s/reform.demo/reform.$package/g" build.gradle
 
 # Rename directory to provided package name
-mv src/integrationTest/java/uk/gov/hmcts/reform/demo src/integrationTest/java/uk/gov/hmcts/reform/${package}
-mv src/main/java/uk/gov/hmcts/reform/demo src/main/java/uk/gov/hmcts/reform/${package}
+git mv src/integrationTest/java/uk/gov/hmcts/reform/demo/ src/integrationTest/java/uk/gov/hmcts/reform/${package}
+git mv src/main/java/uk/gov/hmcts/reform/demo/ src/main/java/uk/gov/hmcts/reform/${package}
 
 declare -a headers_to_delete=("Purpose" "What's inside" "Plugins" "Setup" "Hystrix")
 
@@ -56,7 +56,7 @@ do
 done
 
 # Rename title to slug
-sed -i '' "1s/.*/# $slug/" README.md
+perl -i -pe "s/.*\n/# $slug\n/g if 1 .. 1" README.md
 
 # Self-destruct
 rm bin/init.sh
