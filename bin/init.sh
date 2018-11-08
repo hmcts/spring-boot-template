@@ -46,7 +46,6 @@ sed -i '' "s/reform.demo/reform.$package/g" build.gradle
 # Rename directory to provided package name
 mv src/integrationTest/java/uk/gov/hmcts/reform/demo src/integrationTest/java/uk/gov/hmcts/reform/${package}
 mv src/main/java/uk/gov/hmcts/reform/demo src/main/java/uk/gov/hmcts/reform/${package}
-mv src/test/java/uk/gov/hmcts/reform/demo src/test/java/uk/gov/hmcts/reform/${package}
 
 declare -a headers_to_delete=("Purpose" "What's inside" "Plugins" "Setup" "Hystrix")
 
