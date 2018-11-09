@@ -9,7 +9,6 @@ services:
         - https_proxy
         - no_proxy
     image: hmcts/spring-boot-template
-    container_name: spring-boot-template
     environment:
       # these environment variables are used by java-logging library
       - ROOT_APPENDER
