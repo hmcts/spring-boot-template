@@ -1,13 +1,12 @@
-FROM openjdk:8-jre
+FROM hmcts/cnp-java-base:openjdk-jre-8-slim-stretch-1.0
 
-COPY build/bootScripts/spring-boot-template /opt/app/bin/
+ENV APP spring-boot-template.jar
+ENV APPLICATION_TOTAL_MEMORY 1024M
+ENV APPLICATION_SIZE_ON_DISK_IN_MB 41
+ENV JAVA_OPTS ""
 
-COPY build/libs/spring-boot-template.jar /opt/app/lib/
+COPY build/libs/$APP /opt/app/
 
-WORKDIR /opt/app
-
-HEALTHCHECK --interval=10s --timeout=10s --retries=10 CMD http_proxy="" curl --silent --fail http://localhost:4550/health
+HEALTHCHECK --interval=10s --timeout=10s --retries=10 CMD http_proxy="" wget -q --spider http://localhost:4550/health || exit 1
 
 EXPOSE 4550
-
-ENTRYPOINT ["/opt/app/bin/spring-boot-template"]
