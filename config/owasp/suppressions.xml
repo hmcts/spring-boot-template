@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.1.xsd">
-  <!-- nothing to suppress. yay -->
+  <suppress>
+    <notes><![CDATA[ pulled by springfox and hystrix ]]></notes>
+    <gav regex="true">^com\.google\.guava:guava:.*$</gav>
+    <cpe>cpe:/a:google:guava</cpe>
+  </suppress>
 </suppressions>
