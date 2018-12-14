@@ -5,4 +5,9 @@
     <gav regex="true">^com\.google\.guava:guava:.*$</gav>
     <cpe>cpe:/a:google:guava</cpe>
   </suppress>
+  
+  <suppress>
+    <notes><![CDATA[ slf4j only has a beta version released with the 'fix', looks like lots of changes in it... ]]></notes>
+    <cve>CVE-2018-8088</cve>
+  </suppress>
 </suppressions>
