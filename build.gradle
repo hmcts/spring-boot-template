@@ -133,9 +133,9 @@ repositories {
 // it is important to specify logback classic and core packages explicitly as libraries like spring boot
 // enforces it's own (older) version which is not recommended.
 def versions = [
-  junit: '5.3.2',
-  reformLogging: '4.0.1',
-  springBoot: springBoot.class.package.implementationVersion,
+  junit           : '5.3.2',
+  reformLogging   : '4.0.1',
+  springBoot      : springBoot.class.package.implementationVersion,
   springfoxSwagger: '2.9.2'
 ]
 
@@ -144,6 +144,8 @@ dependencies {
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-json'
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-json'
+  compile group: 'uk.gov.hmcts.reform', name: 'health-spring-boot-starter', version: '0.0.3'
 
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
 
