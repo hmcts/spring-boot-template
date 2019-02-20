@@ -17,7 +17,7 @@ slug=${git_slug%.*}
 
 read -p "Repo slug: (leave blank for \"$slug\") " new_slug
 
-cd $(realpath $(dirname "$0")/..)
+pushd $(dirname "$0")/..) > /dev/null
 
 if [[ ! -z  "$new_slug"  ]]
 then
@@ -60,3 +60,6 @@ perl -i -pe "s/.*\n/# $slug\n/g if 1 .. 1" README.md
 
 # Self-destruct
 rm bin/init.sh
+
+# Return to original directory
+popd > /dev/null
