@@ -17,7 +17,7 @@ slug=${git_slug%.*}
 
 read -p "Repo slug: (leave blank for \"$slug\") " new_slug
 
-pushd $(dirname "$0")/..) > /dev/null
+pushd $(dirname "$0")/.. > /dev/null
 
 if [[ ! -z  "$new_slug"  ]]
 then
