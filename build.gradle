@@ -5,7 +5,7 @@ plugins {
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.6.RELEASE'
   id 'org.springframework.boot' version '2.1.2.RELEASE'
-  id 'org.owasp.dependencycheck' version '3.3.4'
+  id 'org.owasp.dependencycheck' version '4.0.2'
   id 'com.github.ben-manes.versions' version '0.20.0'
   id 'org.sonarqube' version '2.6.2'
 }
@@ -134,7 +134,7 @@ repositories {
 // enforces it's own (older) version which is not recommended.
 def versions = [
   junit           : '5.3.2',
-  reformLogging   : '4.0.1',
+  reformLogging   : '5.0.1',
   springBoot      : springBoot.class.package.implementationVersion,
   springfoxSwagger: '2.9.2'
 ]

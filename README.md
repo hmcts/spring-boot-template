@@ -20,6 +20,7 @@ The template is a working application with a minimal setup. It contains:
  * integration with Travis CI
  * Hystrix circuit breaker enabled
  * MIT license and contribution information
+ * Helm chart using chart-java.
 
 The application exposes health endpoint (http://localhost:4550/health) and metrics endpoint
 (http://localhost:4550/metrics).
