@@ -29,6 +29,7 @@
     <cve>CVE-2011-2732</cve>
     <cve>CVE-2012-5055</cve>
     <cve>CVE-2018-1260</cve>
+    <cve>CVE-2018-1258</cve>
   </suppress>
 
 </suppressions>
