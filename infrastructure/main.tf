@@ -10,7 +10,6 @@ module "spring-boot-template" {
   location            = "${var.location_app}"
   env                 = "${var.env}"
   ilbIp               = "${var.ilbIp}"
-  resource_group_name = "${azurerm_resource_group.rg.name}"
   subscription        = "${var.subscription}"
   capacity            = "${var.capacity}"
   common_tags         = "${var.common_tags}"
