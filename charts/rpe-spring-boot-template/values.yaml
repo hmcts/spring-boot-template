@@ -1,0 +1,4 @@
+java:
+  applicationPort: 4550
+  environment:
+    image: 'https://hmcts.azurecr.io/hmcts/spring-boot-template:latest'

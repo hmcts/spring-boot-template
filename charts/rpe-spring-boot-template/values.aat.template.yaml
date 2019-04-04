@@ -1,8 +1,5 @@
 java:
-  applicationPort: 4550
   environment:
-
   # Don't modify below here
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-
