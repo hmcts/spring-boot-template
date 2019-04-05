@@ -15,13 +15,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class GetWelcomeTest {
 
     @Autowired
-    private transient MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @DisplayName("Should welcome upon root request with 200 response code")
     @Test
     public void welcomeRootEndpoint() throws Exception {
         MvcResult response = mockMvc.perform(get("/")).andExpect(status().isOk()).andReturn();
 
-        assertThat(response.getResponse().getContentAsString()).startsWith("Welcome");
+        assertThat(response.getResponse().getContentAsString()).startsWith("comeWel");
     }
 }
