@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class GetWelcomeTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    private transient MockMvc mockMvc;
 
     @DisplayName("Should welcome upon root request with 200 response code")
     @Test
