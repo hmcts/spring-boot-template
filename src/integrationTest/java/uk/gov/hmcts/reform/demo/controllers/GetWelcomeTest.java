@@ -22,6 +22,6 @@ public class GetWelcomeTest {
     public void welcomeRootEndpoint() throws Exception {
         MvcResult response = mockMvc.perform(get("/")).andExpect(status().isOk()).andReturn();
 
-        assertThat(response.getResponse().getContentAsString()).startsWith("comeWel");
+        assertThat(response.getResponse().getContentAsString()).startsWith("Welcome");
     }
 }
