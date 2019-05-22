@@ -150,6 +150,16 @@ dependencyManagement {
   }
 }
 
+configurations.all {
+  resolutionStrategy {  
+    eachDependency { DependencyResolveDetails details ->
+      if (details.requested.group in ['com.fasterxml.jackson.core', 'com.fasterxml.jackson.module', 'com.fasterxml.jackson.datatype']) {
+        details.useVersion '2.9.9'
+      }
+    }
+  }
+}
+
 dependencies {
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
