@@ -36,11 +36,6 @@
       <property name="minimum" value="2"/>
     </properties>
   </rule>
-  <rule ref="category/java/codestyle.xml/VariableNamingConventions">
-    <properties>
-      <property name="violationSuppressRegex" value=".*'log'.*"/>
-    </properties>
-  </rule>
   <rule ref="category/java/design.xml">
     <exclude name="AvoidCatchingGenericException"/>
     <exclude name="UseUtilityClass"/>
