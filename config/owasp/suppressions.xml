@@ -1,36 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.1.xsd">
-  <suppress>
-    <notes><![CDATA[ pulled by springfox and hystrix ]]></notes>
-    <gav regex="true">^com\.google\.guava:guava:.*$</gav>
-    <cpe>cpe:/a:google:guava</cpe>
-  </suppress>
-  
-  <suppress>
-    <notes><![CDATA[ slf4j only has a beta version released with the 'fix', looks like lots of changes in it... ]]></notes>
-    <cve>CVE-2018-8088</cve>
-  </suppress>
-
-  <suppress>
-    <notes><![CDATA[
-    Suppressing as it seems a false positive as per https://github.com/jeremylong/DependencyCheck/issues/1573
-    ]]></notes>
-    <gav regex="true">^io\.netty:netty-tcnative-boringssl-static:.*</gav>
-    <cve>CVE-2014-3488</cve>
-    <cve>CVE-2015-2156</cve>
-  </suppress>
-
-  <suppress>
-    <notes><![CDATA[
-    Suppressing as it seems a false positive as per https://github.com/jeremylong/DependencyCheck/issues/1665
-    ]]></notes>
-    <gav regex="true">^org\.springframework\.security:spring-security-rsa:1.0.7.RELEASE</gav>
-    <cve>CVE-2011-2731</cve>
-    <cve>CVE-2011-2732</cve>
-    <cve>CVE-2012-5055</cve>
-    <cve>CVE-2018-1260</cve>
-    <cve>CVE-2018-1258</cve>
-  </suppress>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
   <suppress>
     <notes><![CDATA[
      Suppressing as it seems a false positive
