@@ -3,11 +3,11 @@ plugins {
   id 'checkstyle'
   id 'pmd'
   id 'jacoco'
-  id 'io.spring.dependency-management' version '1.0.7.RELEASE'
-  id 'org.springframework.boot' version '2.1.4.RELEASE' // remove tomcat version force below when updating spring boot version
-  id 'org.owasp.dependencycheck' version '4.0.2'
-  id 'com.github.ben-manes.versions' version '0.20.0'
-  id 'org.sonarqube' version '2.6.2'
+  id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+  id 'org.springframework.boot' version '2.1.6.RELEASE'
+  id 'org.owasp.dependencycheck' version '5.1.0'
+  id 'com.github.ben-manes.versions' version '0.21.0'
+  id 'org.sonarqube' version '2.7.1'
 }
 
 group = 'uk.gov.hmcts.reform'
@@ -76,7 +76,7 @@ checkstyle {
 }
 
 pmd {
-  toolVersion = "6.9.0"
+  toolVersion = "6.16.0"
   sourceSets = [sourceSets.main, sourceSets.test, sourceSets.functionalTest, sourceSets.integrationTest, sourceSets.smokeTest]
   reportsDir = file("$project.buildDir/reports/pmd")
   ruleSetFiles = files("config/pmd/ruleset.xml")
@@ -130,25 +130,12 @@ repositories {
   mavenCentral()
 }
 
-// it is important to specify logback classic and core packages explicitly as libraries like spring boot
-// enforces it's own (older) version which is not recommended.
 def versions = [
-  junit           : '5.3.2',
+  junit           : '5.5.0',
   reformLogging   : '5.0.1',
   springBoot      : springBoot.class.package.implementationVersion,
   springfoxSwagger: '2.9.2'
 ]
-
-dependencyManagement {
-  dependencies {
-    // CVE-2019-0232 - command line injections on windows - fixed on spring boot master but not released
-    dependencySet(group: 'org.apache.tomcat.embed', version: '9.0.19') {
-      entry 'tomcat-embed-core'
-      entry 'tomcat-embed-el'
-      entry 'tomcat-embed-websocket'
-    }
-  }
-}
 
 configurations.all {
   resolutionStrategy {  
@@ -165,12 +152,12 @@ dependencies {
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   compile group: 'org.springframework.boot', name: 'spring-boot-starter-json'
-  compile group: 'uk.gov.hmcts.reform', name: 'health-spring-boot-starter', version: '0.0.3'
+  compile group: 'uk.gov.hmcts.reform', name: 'health-spring-boot-starter', version: '0.0.4'
 
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
 
   compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformLogging
-  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.1.0.RELEASE'
+  compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.1.2.RELEASE'
 
   testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.junit
   testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: versions.junit
