@@ -5,7 +5,7 @@ plugins {
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.8.RELEASE'
   id 'org.springframework.boot' version '2.1.6.RELEASE'
-  id 'org.owasp.dependencycheck' version '5.1.0'
+  id 'org.owasp.dependencycheck' version '5.1.1'
   id 'com.github.ben-manes.versions' version '0.21.0'
   id 'org.sonarqube' version '2.7.1'
 }
@@ -154,6 +154,10 @@ configurations.all {
     eachDependency { DependencyResolveDetails details ->
       if (details.requested.group in ['com.fasterxml.jackson.core', 'com.fasterxml.jackson.module', 'com.fasterxml.jackson.datatype']) {
         details.useVersion '2.9.9'
+      }
+
+      if (details.requested.name == 'jackson-databind') {
+        details.useVersion '2.9.9.1'
       }
     }
   }
