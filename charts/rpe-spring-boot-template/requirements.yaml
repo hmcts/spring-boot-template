@@ -1,4 +1,4 @@
 dependencies:
   - name: java
-    version: ~2.0.3
-    repository: '@hmcts'
+    version: ~2.3.1
+    repository: '@hmctspublic'
