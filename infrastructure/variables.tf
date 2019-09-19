@@ -1,19 +1,12 @@
-variable "product" {
-  type    = "string"
-}
+variable "product" {}
 
-variable "component" {
-  type = "string"
-}
+variable "component" {}
 
 variable "location" {
-  type    = "string"
   default = "UK South"
 }
 
-variable "env" {
-  type = "string"
-}
+variable "env" {}
 
 variable "subscription" {}
 
