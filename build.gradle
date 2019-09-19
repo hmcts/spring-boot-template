@@ -13,8 +13,10 @@ plugins {
 group = 'uk.gov.hmcts.reform'
 version = '0.0.1'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+allprojects {
+  sourceCompatibility = '11'
+  targetCompatibility = '11'
+}
 
 sourceSets {
   functionalTest {
@@ -76,7 +78,7 @@ checkstyle {
 }
 
 pmd {
-  toolVersion = "6.16.0"
+  toolVersion = "6.18.0"
   sourceSets = [sourceSets.main, sourceSets.test, sourceSets.functionalTest, sourceSets.integrationTest, sourceSets.smokeTest]
   reportsDir = file("$project.buildDir/reports/pmd")
   // https://github.com/pmd/pmd/issues/876
@@ -149,7 +151,7 @@ repositories {
 
 def versions = [
   junit           : '5.5.0',
-  reformLogging   : '5.0.1',
+  reformLogging   : '5.1.0',
   springBoot      : springBoot.class.package.implementationVersion,
   springfoxSwagger: '2.9.2'
 ]
@@ -177,8 +179,8 @@ dependencies {
 
   compile group: 'io.springfox', name: 'springfox-swagger2', version: versions.springfoxSwagger
 
-  compile group: 'uk.gov.hmcts.reform', name: 'java-logging', version: versions.reformLogging
-  compile group: 'uk.gov.hmcts.reform', name: 'java-logging-appinsights', version: versions.reformLogging
+  compile group: 'uk.gov.hmcts.reform', name: 'logging', version: versions.reformLogging
+  compile group: 'uk.gov.hmcts.reform', name: 'logging-appinsights', version: versions.reformLogging
   compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.1.3.RELEASE'
 
   testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.junit
