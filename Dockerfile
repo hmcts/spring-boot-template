@@ -1,5 +1,5 @@
 # also update version in RUN wget line, when changing, it doesn't seem to expand in the URL for some reason if you try use this ARG
-ARG APP_INSIGHTS_AGENT_VERSION=2.5.0
+ARG APP_INSIGHTS_AGENT_VERSION=2.5.1
 # Build image
 
 FROM busybox as downloader
