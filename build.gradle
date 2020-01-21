@@ -3,7 +3,7 @@ plugins {
   id 'checkstyle'
   id 'pmd'
   id 'jacoco'
-  id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+  id 'io.spring.dependency-management' version '1.0.9.RELEASE'
   id 'org.springframework.boot' version '2.2.4.RELEASE'
   id 'org.owasp.dependencycheck' version '5.3.0'
   id 'com.github.ben-manes.versions' version '0.27.0'
