@@ -1,4 +1,5 @@
 java:
   applicationPort: 4550
+  aadIdentityName: rpe
   environment:
     image: 'hmctspublic.azurecr.io/rpe/spring-boot-template:latest'
