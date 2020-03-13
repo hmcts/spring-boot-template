@@ -73,8 +73,7 @@ task smoke(type: Test) {
 checkstyle {
   maxWarnings = 0
   toolVersion = '8.29'
-  // need to set configDir to rootDir otherwise submodule will use submodule/config/checkstyle
-  configDir = new File(rootDir, 'config/checkstyle')
+  getConfigDirectory().set(new File(rootDir, 'config/checkstyle'))
 }
 
 pmd {
@@ -186,7 +185,9 @@ test {
 mainClassName = 'uk.gov.hmcts.reform.demo.Application'
 
 bootJar {
-  archiveName = 'spring-boot-template.jar'
+  getArchiveFileName().set(provider {
+    'spring-boot-template.jar'
+  })
 
   manifest {
     attributes('Implementation-Version': project.version.toString())
