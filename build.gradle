@@ -63,12 +63,16 @@ test {
   failFast = true
 }
 
-task functional(type: Test, description: 'Runs the functional tests.', group: 'Verification') {
+task functional(type: Test) {
+  description = "Runs functional tests"
+  group = "Verification"
   testClassesDirs = sourceSets.functionalTest.output.classesDirs
   classpath = sourceSets.functionalTest.runtimeClasspath
 }
 
-task integration(type: Test, description: 'Runs the integration tests.', group: 'Verification') {
+task integration(type: Test) {
+  description = "Runs integration tests"
+  group = "Verification"
   testClassesDirs = sourceSets.integrationTest.output.classesDirs
   classpath = sourceSets.integrationTest.runtimeClasspath
   failFast = true
