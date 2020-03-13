@@ -152,9 +152,6 @@ repositories {
   mavenLocal()
   jcenter()
   mavenCentral()
-  maven {
-    url "https://dl.bintray.com/hmcts/hmcts-maven"
-  }
 }
 
 def versions = [
