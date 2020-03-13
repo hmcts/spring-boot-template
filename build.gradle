@@ -105,18 +105,15 @@ sonarqube {
   }
 }
 
-dependencyUpdates.resolutionStrategy {
-  componentSelection { rules ->
-    rules.all {
-      def isNonStable = { String version ->
-        ['alpha', 'beta', 'rc', 'cr', 'm', 'preview', 'b', 'ea'].any { qualifier ->
-          version ==~ /(?i).*[.-]\$qualifier[.\\d-+]*/
-        }
-      }
-      if (isNonStable(candidate.version) && !isNonStable(currentVersion)) {
-        selection.reject('Release candidate')
-      }
-    }
+// before committing a change, make sure task still works
+dependencyUpdates {
+  def isNonStable = { String version ->
+    def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { qualifier -> version.toUpperCase().contains(qualifier) }
+    def regex = /^[0-9,.v-]+$/
+    return !stableKeyword && !(version ==~ regex)
+  }
+  rejectVersionIf { selection -> // <---- notice how the closure argument is named
+    return isNonStable(selection.candidate.version) && !isNonStable(selection.currentVersion)
   }
 }
 
