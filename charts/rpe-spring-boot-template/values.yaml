@@ -1,5 +1,6 @@
 java:
   applicationPort: 4550
+  image: 'hmctspublic.azurecr.io/rpe/spring-boot-template:latest'
+  ingressHost: rpe-spring-boot-template-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   aadIdentityName: rpe
   environment:
-    image: 'hmctspublic.azurecr.io/rpe/spring-boot-template:latest'
