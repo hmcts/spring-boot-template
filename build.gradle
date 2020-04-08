@@ -215,3 +215,7 @@ bootJar {
     attributes('Implementation-Version': project.version.toString())
   }
 }
+
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+}
