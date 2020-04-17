@@ -14,6 +14,7 @@ The template is a working application with a minimal setup. It contains:
  * application skeleton
  * setup script to prepare project
  * common plugins and libraries
+ * [HMCTS Java plugin](https://github.com/hmcts/gradle-java-plugin)
  * docker setup
  * swagger configuration for api documentation ([see how to publish your api documentation to shared repository](https://github.com/hmcts/reform-api-docs#publish-swagger-docs))
  * code quality tools already set up
@@ -29,19 +30,32 @@ The application exposes health endpoint (http://localhost:4550/health) and metri
 
 The template contains the following plugins:
 
-  * checkstyle
+  * HMCTS Java plugin
 
-    https://docs.gradle.org/current/userguide/checkstyle_plugin.html
+    Applies code analysis tools with HMCTS default settings. See the [project repository](https://github.com/hmcts/gradle-java-plugin) for details.
 
-    Performs code style checks on Java source files using Checkstyle and generates reports from these checks.
-    The checks are included in gradle's *check* task (you can run them by executing `./gradlew check` command).
+    Analysis tools include:
 
-  * pmd
+    * checkstyle
 
-    https://docs.gradle.org/current/userguide/pmd_plugin.html
+        https://docs.gradle.org/current/userguide/checkstyle_plugin.html
 
-    Performs static code analysis to finds common programming flaws. Included in gradle `check` task.
+        Performs code style checks on Java source files using Checkstyle and generates reports from these checks.
+        The checks are included in gradle's *check* task (you can run them by executing `./gradlew check` command).
 
+    * pmd
+
+        https://docs.gradle.org/current/userguide/pmd_plugin.html
+
+        Performs static code analysis to finds common programming flaws. Included in gradle `check` task.
+
+    * org.owasp.dependencycheck
+
+        https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/index.html
+
+        Provides monitoring of the project's dependent libraries and creating a report
+        of known vulnerable components that are included in the build. To run it
+        execute `gradle dependencyCheck` command.
 
   * jacoco
 
@@ -70,13 +84,6 @@ The template contains the following plugins:
 
     Reduces the amount of work needed to create a Spring application
 
-  * org.owasp.dependencycheck
-
-    https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/index.html
-
-    Provides monitoring of the project's dependent libraries and creating a report
-    of known vulnerable components that are included in the build. To run it
-    execute `gradle dependencyCheck` command.
 
   * com.github.ben-manes.versions
 
