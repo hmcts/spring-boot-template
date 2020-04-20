@@ -43,12 +43,6 @@ The template contains the following plugins:
         Performs code style checks on Java source files using Checkstyle and generates reports from these checks.
         The checks are included in gradle's *check* task (you can run them by executing `./gradlew check` command).
 
-    * pmd
-
-        https://docs.gradle.org/current/userguide/pmd_plugin.html
-
-        Performs static code analysis to finds common programming flaws. Included in gradle `check` task.
-
     * org.owasp.dependencycheck
 
         https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/index.html
