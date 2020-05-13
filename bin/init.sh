@@ -24,7 +24,7 @@ then
   slug="$new_slug"
 fi
 
-declare -a files_with_port=(.env Dockerfile README.md src/main/resources/application.yaml)
+declare -a files_with_port=(.env Dockerfile README.md src/main/resources/application.yaml charts/rpe-spring-boot-template/values.yaml)
 declare -a files_with_slug=(build.gradle docker-compose.yml Dockerfile README.md ./infrastructure/main.tf ./src/main/java/uk/gov/hmcts/reform/demo/controllers/RootController.java)
 
 # Replace port number
