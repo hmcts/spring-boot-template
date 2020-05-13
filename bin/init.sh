@@ -11,21 +11,23 @@
 
 read -p "Port number for new app: " port
 read -p "Replace \`demo\` package name with: " package
+read -p "Repo product: (It's first part of the git repo name. Often a team name) " product_name
+read -p "Repo component: (It's second part of git repo name. Application name) " component_name
 
-git_slug=$(git config remote.origin.url | cut -d '/' -f 2)
-slug=${git_slug%.*}
-
-read -p "Repo slug: (leave blank for \"$slug\") " new_slug
 
 pushd $(dirname "$0")/.. > /dev/null
 
-if [[ ! -z  "$new_slug"  ]]
-then
-  slug="$new_slug"
-fi
+slug="$product_name-$component_name"
 
 declare -a files_with_port=(.env Dockerfile README.md src/main/resources/application.yaml charts/rpe-spring-boot-template/values.yaml)
 declare -a files_with_slug=(build.gradle docker-compose.yml Dockerfile README.md ./infrastructure/main.tf ./src/main/java/uk/gov/hmcts/reform/demo/controllers/RootController.java)
+
+# Replace image repo
+for i in "values.yaml"
+do
+  perl -i -pe "s/rpe/$product_name/g" ${i}
+  perl -i -pe "s/spring-boot-template/$component_name/g" ${i}
+done
 
 # Replace port number
 for i in ${files_with_port[@]}
