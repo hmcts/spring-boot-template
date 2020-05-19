@@ -1,6 +1,38 @@
 #!groovy
+<<<<<<< HEAD
+=======
+properties(
+    [
+        [
+            $class       : 'GithubProjectProperty',
+            projectUrlStr: 'https://github.com/hmcts/spring-boot-template'
+        ],
+        pipelineTriggers([[$class: 'GitHubPushTrigger']])
+    ]
+)
+
+>>>>>>> 5e9f5b4e406897ec4ebdc1cd73bc9c53478385b8
 @Library("Infrastructure")
 
 def type = "java"
 def product = "rpe"
 def component = "demo"
+<<<<<<< HEAD
+=======
+
+
+withPipeline(type, product, component) {
+    installCharts()
+    disableLegacyDeployment()
+
+    onMaster {
+        enableSlackNotifications('#rpe-spring-demo-builds')
+    }
+    onDemo {
+        enableSlackNotifications('#rpe-spring-demo-builds')
+    }
+    onPR {
+        enableSlackNotifications('#rpe-spring-demo-builds')
+    }
+}
+>>>>>>> 5e9f5b4e406897ec4ebdc1cd73bc9c53478385b8
