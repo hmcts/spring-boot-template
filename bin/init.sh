@@ -13,7 +13,6 @@ read -p "Port number for new app: " port
 read -p "Replace \`demo\` package name with: " package
 read -p "Repo product: (It's first part of the git repo name. Often a team name) " product_name
 read -p "Repo component: (It's second part of git repo name. Application name) " component_name
-read -p "Slack Channel for build notification " slack_channel
 
 pushd $(dirname "$0")/.. > /dev/null
 
@@ -25,8 +24,6 @@ declare -a files_with_slug=(build.gradle docker-compose.yml Dockerfile README.md
 # Replace in CNP file
 for i in "Jenkinsfile_template"
 do
-  perl -i -pe "s/spring-boot-template/$slug/g" ${i}
-  perl -i -pe "s/rpe-spring-demo-builds/$slack_channel/g" ${i}
   perl -i -pe "s/rpe/$product_name/g" ${i}
   perl -i -pe "s/demo/$component_name/g" ${i}
 done
