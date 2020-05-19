@@ -1,6 +1,5 @@
 #!groovy
-<<<<<<< HEAD
-=======
+
 properties(
     [
         [
@@ -11,15 +10,11 @@ properties(
     ]
 )
 
->>>>>>> 5e9f5b4e406897ec4ebdc1cd73bc9c53478385b8
 @Library("Infrastructure")
 
 def type = "java"
 def product = "rpe"
 def component = "demo"
-<<<<<<< HEAD
-=======
-
 
 withPipeline(type, product, component) {
     installCharts()
@@ -35,4 +30,3 @@ withPipeline(type, product, component) {
         enableSlackNotifications('#rpe-spring-demo-builds')
     }
 }
->>>>>>> 5e9f5b4e406897ec4ebdc1cd73bc9c53478385b8
