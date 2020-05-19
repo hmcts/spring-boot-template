@@ -1,0 +1,11 @@
+#!groovy
+
+@Library("Infrastructure")
+
+def type = "java"
+def product = "rpe"
+def component = "demo"
+
+withPipeline(type, product, component) {
+    disableLegacyDeployment()
+}
