@@ -193,6 +193,9 @@ dependencies {
 
   compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.2'
   compile group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.13.2'
+  
+  compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '9.0.35'
+  compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '9.0.35'
 
   testImplementation libraries.junit5
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
