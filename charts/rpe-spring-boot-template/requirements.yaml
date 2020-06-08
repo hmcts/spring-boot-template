@@ -1,4 +1,0 @@
-dependencies:
-  - name: java
-    version: ~2.16.1
-    repository: '@hmctspublic'
