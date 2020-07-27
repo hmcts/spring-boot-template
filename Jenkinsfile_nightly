@@ -11,6 +11,4 @@ def type = "java"
 def product = "rpe"
 def component = "spring-boot-template"
 
-withNightlyPipeline(type, product, component) {
-  enableSlackNotifications('#rpe-build-notices')
-}
+withNightlyPipeline(type, product, component) {}
