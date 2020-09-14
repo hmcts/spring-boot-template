@@ -161,7 +161,7 @@ repositories {
 
 def versions = [
   junit           : '5.6.2',
-  junitPlatform   : '1.6.2',
+  junitPlatform   : '1.7.0',
   reformLogging   : '5.1.5',
   springBoot      : springBoot.class.package.implementationVersion,
   springfoxSwagger: '2.9.2'
