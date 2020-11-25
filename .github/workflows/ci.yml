@@ -18,5 +18,4 @@ jobs:
         with:
           java-version: 11
       - name: Build
-        working-directory: ./spring-boot-template
         run: ./gradlew check
