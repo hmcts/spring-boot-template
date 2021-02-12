@@ -4,7 +4,7 @@ plugins {
   id 'pmd'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-  id 'org.springframework.boot' version '2.3.4.RELEASE'
+  id 'org.springframework.boot' version '2.4.2'
   id 'org.owasp.dependencycheck' version '6.0.3'
   id 'com.github.ben-manes.versions' version '0.36.0'
   id 'org.sonarqube' version '3.0'
@@ -162,9 +162,9 @@ repositories {
 def versions = [
   junit           : '5.7.0',
   junitPlatform   : '1.7.0',
-  reformLogging   : '5.1.5',
+  reformLogging   : '5.1.7',
   springBoot      : springBoot.class.package.implementationVersion,
-  springfoxSwagger: '2.9.2'
+  springfoxSwagger: '3.0.0'
 ]
 
 ext.libraries = [
@@ -188,11 +188,10 @@ dependencies {
   implementation group: 'uk.gov.hmcts.reform', name: 'logging', version: versions.reformLogging
   implementation group: 'uk.gov.hmcts.reform', name: 'logging-appinsights', version: versions.reformLogging
   implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-hystrix', version: '2.2.6.RELEASE'
-  implementation group: 'uk.gov.hmcts.reform', name: 'properties-volume-spring-boot-starter', version: '0.1.0'
 
   compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.0'
   compile group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.14.0'
-  
+
   compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '9.0.40'
   compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '9.0.40'
 
