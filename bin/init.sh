@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 #
 # Script to initialise project by executing steps as follows:
 #   - Replace port number
@@ -42,7 +42,7 @@ do
 done
 
 #update app insights config
-for i in "src/resources/application.yaml"
+for i in "src/main/resources/application.yaml"
 do
   perl -i -pe "s/rpe/$product_name/g" ${i}
 done
