@@ -41,6 +41,12 @@ do
   perl -i -pe "s/rpe/$product_name/g" ${i}
 done
 
+#update app insights config
+for i in "src/resources/application.yaml"
+do
+  perl -i -pe "s/rpe/$product_name/g" ${i}
+done
+
 # Replace port number
 for i in ${files_with_port[@]}
 do
