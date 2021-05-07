@@ -8,5 +8,5 @@ maintainers:
   - name: HMCTS rpe team
 dependencies:
   - name: java
-    version: 3.4.5
+    version: 3.4.7
     repository: '@hmctspublic'
