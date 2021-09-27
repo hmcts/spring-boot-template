@@ -1,9 +1,9 @@
-package uk.gov.hmcts.reform.pip.rules.smoketests;
+package uk.gov.hmcts.reform.demo.smoketests;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 
-@ComponentScan("uk.gov.hmcts.reform.pip.rules.smoketests")
+@ComponentScan("uk.gov.hmcts.reform.demo.smoketests")
 @PropertySource("application.properties")
 public class SmokeTestConfiguration {
 }

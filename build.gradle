@@ -163,6 +163,7 @@ def versions = [
   junit           : '5.7.2',
   junitPlatform   : '1.7.2',
   reformLogging   : '5.1.7',
+  restAssured     : '3.0.3',  
   springBoot      : springBoot.class.package.implementationVersion,
   springfoxSwagger: '3.0.0'
 ]
@@ -203,7 +204,9 @@ dependencies {
 
   functionalTestImplementation sourceSets.main.runtimeClasspath
 
+  smokeTestImplementation group: 'io.rest-assured', name: 'rest-assured', version: versions.restAssured
   smokeTestImplementation sourceSets.main.runtimeClasspath
+  smokeTestImplementation sourceSets.test.runtimeClasspath
 }
 
 mainClassName = 'uk.gov.hmcts.reform.demo.Application'
