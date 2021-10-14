@@ -177,19 +177,6 @@ docker image rm <image-id>
 
 There is no need to remove postgres and java or similar core images.
 
-## Hystrix
-
-[Hystrix](https://github.com/Netflix/Hystrix/wiki) is a library that helps you control the interactions
-between your application and other services by adding latency tolerance and fault tolerance logic. It does this
-by isolating points of access between the services, stopping cascading failures across them,
-and providing fallback options. We recommend you to use Hystrix in your application if it calls any services.
-
-### Hystrix circuit breaker
-
-This template API has [Hystrix Circuit Breaker](https://github.com/Netflix/Hystrix/wiki/How-it-Works#circuit-breaker)
-already enabled. It monitors and manages all the`@HystrixCommand` or `HystrixObservableCommand` annotated methods
-inside `@Component` or `@Service` annotated classes.
-
 ### Other
 
 Hystrix offers much more than Circuit Breaker pattern implementation or command monitoring.
