@@ -151,6 +151,7 @@ repositories {
 
 ext {
   reformLoggingVersion = "5.1.9"
+  log4JVersion = "2.15.0"
 }
 
 dependencies {
@@ -164,8 +165,8 @@ dependencies {
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: reformLoggingVersion
   implementation group: 'com.github.hmcts.java-logging', name: 'logging-appinsights', version: reformLoggingVersion
 
-  implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
-  implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.14.1'
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4JVersion
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: log4JVersion
 
   testImplementation(platform('org.junit:junit-bom:5.8.2'))
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
