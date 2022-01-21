@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Each CI run on master should automatically save and upload (if updated) documentation.
  */
 @WebMvcTest
-@ContextConfiguration(classes = SwaggerConfiguration.class)
+@ContextConfiguration(classes = OpenAPIConfiguration.class)
 @AutoConfigureMockMvc
 class SwaggerPublisherTest {
 
@@ -31,7 +31,7 @@ class SwaggerPublisherTest {
     @Test
     @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
     void generateDocs() throws Exception {
-        byte[] specs = mvc.perform(get("/v2/api-docs"))
+        byte[] specs = mvc.perform(get("/v3/api-docs"))
             .andExpect(status().isOk())
             .andReturn()
             .getResponse()

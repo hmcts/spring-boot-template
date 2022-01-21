@@ -11,6 +11,9 @@ management:
       exposure:
         include: health, info, prometheus
 
+springdoc:
+  packagesToScan: uk.gov.hmcts.reform.demo.controllers
+
 #If you use a database then uncomment below lines and update db properties accordingly
 spring:
   config:

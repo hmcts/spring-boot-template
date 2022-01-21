@@ -4,18 +4,19 @@ plugins {
   id 'pmd'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-  id 'org.springframework.boot' version '2.5.6'
-  id 'org.owasp.dependencycheck' version '6.5.2.1'
-  id 'com.github.ben-manes.versions' version '0.39.0'
+  id 'org.springframework.boot' version '2.6.2'
+  id 'org.owasp.dependencycheck' version '6.5.3'
+  id 'com.github.ben-manes.versions' version '0.41.0'
   id 'org.sonarqube' version '3.3'
 }
 
 group = 'uk.gov.hmcts.reform'
 version = '0.0.1'
 
-allprojects {
-  sourceCompatibility = '11'
-  targetCompatibility = '11'
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(11)
+  }
 }
 
 sourceSets {
@@ -49,6 +50,11 @@ sourceSets {
 
 tasks.withType(JavaCompile) {
   options.compilerArgs << "-Xlint:unchecked" << "-Werror"
+}
+
+// https://github.com/gradle/gradle/issues/16791
+tasks.withType(JavaExec).configureEach {
+  javaLauncher.set(javaToolchains.launcherFor(java.toolchain))
 }
 
 tasks.withType(Test) {
@@ -86,12 +92,12 @@ task smoke(type: Test) {
 
 checkstyle {
   maxWarnings = 0
-  toolVersion = '8.29'
+  toolVersion = '9.2.1'
   getConfigDirectory().set(new File(rootDir, 'config/checkstyle'))
 }
 
 pmd {
-  toolVersion = "6.39.0"
+  toolVersion = "6.41.0"
   sourceSets = [sourceSets.main, sourceSets.test, sourceSets.functionalTest, sourceSets.integrationTest, sourceSets.smokeTest]
   reportsDir = file("$project.buildDir/reports/pmd")
   // https://github.com/pmd/pmd/issues/876
@@ -160,7 +166,7 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
 
-  implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+  implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.4'
 
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: reformLoggingVersion
   implementation group: 'com.github.hmcts.java-logging', name: 'logging-appinsights', version: reformLoggingVersion
