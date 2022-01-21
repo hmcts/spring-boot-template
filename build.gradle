@@ -48,6 +48,17 @@ sourceSets {
   }
 }
 
+configurations {
+  functionalTestImplementation.extendsFrom implementation
+  functionalTestRuntimeOnly.extendsFrom runtimeOnly
+
+  integrationTestImplementation.extendsFrom implementation
+  integrationTestRuntimeOnly.extendsFrom runtimeOnly
+
+  smokeTestImplementation.extendsFrom implementation
+  smokeTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
 tasks.withType(JavaCompile) {
   options.compilerArgs << "-Xlint:unchecked" << "-Werror"
 }
