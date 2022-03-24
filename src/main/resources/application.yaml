@@ -17,6 +17,7 @@ springdoc:
 #If you use a database then uncomment below lines and update db properties accordingly
 spring:
   config:
+    #Append your team name to this file path: e.g "optional:configtree:/mnt/secrets/rpts/"
     import: "optional:configtree:/mnt/secrets/"
   application:
     name: Spring Boot Template
