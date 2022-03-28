@@ -17,7 +17,7 @@ springdoc:
 #If you use a database then uncomment below lines and update db properties accordingly
 spring:
   config:
-    import: "optional:configtree:/mnt/secrets/"
+    import: "optional:configtree:/mnt/secrets/rpe/"
   application:
     name: Spring Boot Template
 #  datasource:

@@ -41,7 +41,7 @@ do
   perl -i -pe "s/rpe/$product_name/g" ${i}
 done
 
-#update app insights config
+#update app insights & file mount config
 for i in "src/main/resources/application.yaml"
 do
   perl -i -pe "s/rpe/$product_name/g" ${i}
