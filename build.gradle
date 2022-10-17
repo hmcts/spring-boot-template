@@ -192,7 +192,7 @@ dependencies {
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: '6.0.1'
 
   // temporary work around for dependency check
-  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
+  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.4.2'
   implementation group: 'com.fasterxml.jackson', name: 'jackson-bom', version: '2.13.3', ext: 'pom'
 
   implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4JVersion
