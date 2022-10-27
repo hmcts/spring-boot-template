@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
-  <suppress until="2030-01-01">
-    <notes><![CDATA[
-     Suppressing as it's a false positive (see: https://pivotal.io/security/cve-2018-1258)
-   ]]></notes>
-    <gav regex="true">^org\.springframework\.security:spring-security-crypto:5.4.[0-5]</gav>
-    <cpe>cpe:/a:pivotal_software:spring_security</cpe>
+
+  <!--Please add all the false positives under the below section-->
+  <suppress>
+    <notes>False Positives
+      CVE-2016-1000027 (see: https://github.com/spring-projects/spring-framework/issues/24434#issuecomment-579669626)
+      CVE-2018-1258 (see: https://pivotal.io/security/cve-2018-1258)
+    </notes>
+    <cve>CVE-2016-1000027</cve>
     <cve>CVE-2018-1258</cve>
   </suppress>
+  <!--End of false positives section -->
+
+  <!--Please add all the temporary suppression under the below section-->
   <suppress>
-    <notes><![CDATA[
-        CVE is a json vulnerability for Node projects. False positive reported at https://github.com/jeremylong/DependencyCheck/issues/2794
-    ]]></notes>
-    <cve>CVE-2020-10663</cve>
-    <cve>CVE-2020-7712</cve>
-   </suppress>
+    <notes>
+      CVE-2022-38752 (Resolved in snakeyaml 1.32 but still being flagged by dependency check)
+    </notes>
+    <cve>CVE-2022-38752</cve>
+  </suppress>
+  <!--End of temporary suppression section -->
+
 </suppressions>
