@@ -1,5 +1,5 @@
 {
-  "enabledManagers": ["helm-requirements","gradle-wrapper"],
+  "enabledManagers": ["helm-requirements","gradle-wrapper","regex"],
   "labels": ["dependencies"],
   "helm-requirements":
   {
@@ -7,5 +7,13 @@
     "aliases": {
       "hmctspublic": "https://hmctspublic.azurecr.io/helm/v1/repo/"
     }
-  }
+  },
+  "regexManagers": [
+    {
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sARG .*?_VERSION=(?<currentValue>.*)\\s"
+      ]
+    }
+  ]
 }
