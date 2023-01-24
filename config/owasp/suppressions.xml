@@ -4,21 +4,25 @@
   <!--Please add all the false positives under the below section-->
   <suppress>
     <notes>False Positives
-      CVE-2016-1000027 (see: https://github.com/spring-projects/spring-framework/issues/24434#issuecomment-579669626)
-      CVE-2018-1258 (see: https://pivotal.io/security/cve-2018-1258)
+      CVE-2016-1000027 - https://github.com/spring-projects/spring-framework/issues/24434#issuecomment-579669626
+      CVE-2018-1258 - https://pivotal.io/security/cve-2018-1258
+      CVE-2021-4277 - https://github.com/jeremylong/DependencyCheck/issues/5213
     </notes>
     <cve>CVE-2016-1000027</cve>
     <cve>CVE-2018-1258</cve>
+    <cve>CVE-2021-4277</cve>
   </suppress>
   <!--End of false positives section -->
 
   <!--Please add all the temporary suppression under the below section-->
-  <suppress>
+  <suppress until="2023-03-14">
     <notes>
       CVE-2022-38752 (Resolved in snakeyaml 1.32 but still being flagged by dependency check)
     </notes>
     <cve>CVE-2022-38752</cve>
+    <cve>CVE-2022-1471</cve>
+    <cve>CVE-2022-3064</cve>
+    <cve>CVE-2021-4235</cve>
   </suppress>
   <!--End of temporary suppression section -->
-
 </suppressions>
