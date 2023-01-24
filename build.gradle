@@ -4,7 +4,7 @@ plugins {
   id 'pmd'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.1.0'
-  id 'org.springframework.boot' version '2.7.8'
+  id 'org.springframework.boot' version '3.0.2'
   id 'org.owasp.dependencycheck' version '8.0.1'
   id 'com.github.ben-manes.versions' version '0.44.0'
   id 'org.sonarqube' version '3.5.0.2730'
