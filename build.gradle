@@ -4,7 +4,7 @@ plugins {
   id 'pmd'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.1.0'
-  id 'org.springframework.boot' version '2.7.9'
+  id 'org.springframework.boot' version '3.0.4'
   id 'org.owasp.dependencycheck' version '8.1.2'
   id 'com.github.ben-manes.versions' version '0.45.0'
   id 'org.sonarqube' version '4.0.0.2929'
@@ -180,15 +180,14 @@ ext {
   log4JVersion = "2.19.0"
 }
 
-ext['snakeyaml.version'] = '1.33'
+ext['snakeyaml.version'] = '2.0'
 
 dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
-
-  implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.15'
+  implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.0.0'
 
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: '6.0.1'
 
