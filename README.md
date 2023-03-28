@@ -1,7 +1,5 @@
 # Spring Boot application template
 
-[![Build Status](https://travis-ci.org/hmcts/spring-boot-template.svg?branch=master)](https://travis-ci.org/hmcts/spring-boot-template)
-
 ## Purpose
 
 The purpose of this template is to speed up the creation of new Spring applications within HMCTS
@@ -15,10 +13,8 @@ The template is a working application with a minimal setup. It contains:
  * setup script to prepare project
  * common plugins and libraries
  * docker setup
- * swagger configuration for api documentation ([see how to publish your api documentation to shared repository](https://github.com/hmcts/reform-api-docs#publish-swagger-docs))
+ * automatically publishes API documentation to [hmcts/cnp-api-docs](https://github.com/hmcts/cnp-api-docs)
  * code quality tools already set up
- * integration with Travis CI
- * Hystrix circuit breaker enabled
  * MIT license and contribution information
  * Helm chart using chart-java.
 
@@ -91,12 +87,6 @@ The template contains the following plugins:
 ## Setup
 
 Located in `./bin/init.sh`. Simply run and follow the explanation how to execute it.
-
-## Notes
-
-Since Spring Boot 2.1 bean overriding is disabled. If you want to enable it you will need to set `spring.main.allow-bean-definition-overriding` to `true`.
-
-JUnit 5 is now enabled by default in the project. Please refrain from using JUnit4 and use the next generation
 
 ## Building and deploying the application
 
@@ -176,16 +166,6 @@ docker image rm <image-id>
 ```
 
 There is no need to remove postgres and java or similar core images.
-
-### Other
-
-Hystrix offers much more than Circuit Breaker pattern implementation or command monitoring.
-Here are some other functionalities it provides:
- * [Separate, per-dependency thread pools](https://github.com/Netflix/Hystrix/wiki/How-it-Works#isolation)
- * [Semaphores](https://github.com/Netflix/Hystrix/wiki/How-it-Works#semaphores), which you can use to limit
- the number of concurrent calls to any given dependency
- * [Request caching](https://github.com/Netflix/Hystrix/wiki/How-it-Works#request-caching), allowing
- different code paths to execute Hystrix Commands without worrying about duplicating work
 
 ## License
 
