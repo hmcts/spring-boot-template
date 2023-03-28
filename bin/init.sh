@@ -61,6 +61,7 @@ done
 
 # Replace demo package in all files under ./src
 find ./src -type f -print0 | xargs -0 perl -i -pe "s/reform.demo/reform.$package/g"
+find ./.github/workflows -type f -print0 | xargs -0 perl -i -pe "s/reform.demo/reform.$package/g"
 perl -i -pe "s/reform.demo/reform.$package/g" build.gradle
 
 # Rename charts directory
