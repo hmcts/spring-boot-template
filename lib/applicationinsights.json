@@ -1,4 +1,5 @@
 {
+  "connectionString": "${file:/mnt/secrets/rpe/app-insights-connection-string}",
   "role": {
     "name": "rpe-demo"
   }
