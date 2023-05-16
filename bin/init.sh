@@ -42,7 +42,7 @@ do
 done
 
 #update app insights & file mount config
-for i in "src/main/resources/application.yaml"
+for i in "src/main/resources/application.yaml lib/applicationinsights.json"
 do
   perl -i -pe "s/rpe/$product_name/g" ${i}
 done
