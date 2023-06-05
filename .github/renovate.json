@@ -2,7 +2,6 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>hmcts/.github:renovate-config",
-    "local>hmcts/.github//renovate/automerge-all",
-    "github>hmcts/.github//renovate/global"
+    "local>hmcts/.github//renovate/automerge-all"
   ]
 }
