@@ -2,18 +2,11 @@
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
   <!--Please add all the false positives under the below section-->
   <suppress>
-    <notes>False Positives
-      CVE-2016-1000027 - https://github.com/spring-projects/spring-framework/issues/24434#issuecomment-579669626
+    <notes>False Positive
+      <![CDATA[file name: jackson-databind-2.15.2.jar]]>
     </notes>
-    <cve>CVE-2016-1000027</cve>
+    <packageUrl regex="true">^pkg:maven/com\.fasterxml\.jackson\.core/jackson\-databind@.*$</packageUrl>
+    <cve>CVE-2023-35116</cve>
   </suppress>
   <!--End of false positives section -->
-
-  <!--Please add all the temporary suppression under the below section-->
-  <suppress until="2023-04-14">
-    <notes>
-    </notes>
-    <cve>CVE-2022-1471</cve>
-  </suppress>
-  <!--End of temporary suppression section -->
 </suppressions>
