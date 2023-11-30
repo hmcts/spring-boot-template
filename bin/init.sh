@@ -35,14 +35,22 @@ do
   perl -i -pe "s/spring-boot-template/$component_name/g" ${i}
 done
 
-#update maintainer name
+# Remove "rpe-" prefix from chart name to prepare it for spring-boot-template slug replacement and update maintainer name
 for i in "charts/rpe-spring-boot-template/Chart.yaml"
 do
+  perl -i -pe "s/rpe-//g" ${i}
   perl -i -pe "s/rpe/$product_name/g" ${i}
 done
 
-#update app insights & file mount config
-for i in "src/main/resources/application.yaml lib/applicationinsights.json"
+# Update mount config and packagesToScan
+for i in "src/main/resources/application.yaml"
+do
+  perl -i -pe "s/rpe/$product_name/g" ${i}
+  perl -i -pe "s/reform.demo/reform.$package/g" ${i}
+done
+
+# Update app insights
+for i in "lib/applicationinsights.json"
 do
   perl -i -pe "s/rpe/$product_name/g" ${i}
   perl -i -pe "s/demo/$component_name/g" ${i}
