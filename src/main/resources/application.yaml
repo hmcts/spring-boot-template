@@ -5,6 +5,9 @@ management:
   endpoint:
     health:
       show-details: "always"
+      group:
+       db:
+        include: "db"
   endpoints:
     web:
       base-path: /
