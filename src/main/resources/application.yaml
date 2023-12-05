@@ -5,6 +5,10 @@ management:
   endpoint:
     health:
       show-details: "always"
+      group:
+       db:
+        include: "db"
+      validate-group-membership: false
   endpoints:
     web:
       base-path: /
