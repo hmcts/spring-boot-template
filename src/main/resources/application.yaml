@@ -9,7 +9,6 @@ management:
       # group:
       #  liveness:
       #   include: "db"
-      # validate-group-membership: false
   endpoints:
     web:
       base-path: /
