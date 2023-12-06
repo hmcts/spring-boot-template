@@ -6,7 +6,7 @@ management:
     health:
       show-details: "always"
       group:
-       db:
+       liveness:
         include: "db"
       validate-group-membership: false
   endpoints:
