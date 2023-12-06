@@ -1,7 +1,7 @@
 server:
   port: 4550
 
-#If you use a database then uncomment below lines and update db properties accordingly
+# If you use a database then uncomment the `include: db` line in the health probes and uncomment the datasource section
 management:
   endpoint:
     health:
