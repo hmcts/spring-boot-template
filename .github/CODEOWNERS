@@ -1,4 +1,4 @@
-* @hmcts/platform-operations @hmcts/sds-community-maintained-software
+* @hmcts/platform-operations @hmcts/hmcts/developer-enablement
 
 # Ignore files updated by Renovate
 gradle/wrapper/gradle-wrapper.properties
