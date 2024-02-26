@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
-  <suppress until="2030-01-01">
-    <notes><![CDATA[
-     Suppressing as it's a false positive (see: https://pivotal.io/security/cve-2018-1258)
-   ]]></notes>
-    <gav regex="true">^org\.springframework\.security:spring-security-crypto:5.2.[0-2].RELEASE</gav>
-    <cpe>cpe:/a:pivotal_software:spring_security</cpe>
-    <cve>CVE-2018-1258</cve>
+  <!--Please add all the false positives under the below section-->
+  <suppress>
+    <notes>False Positive
+      <![CDATA[file name: jackson-databind-2.15.2.jar]]>
+    </notes>
+    <packageUrl regex="true">^pkg:maven/com\.fasterxml\.jackson\.core/jackson\-databind@.*$</packageUrl>
+    <cve>CVE-2023-35116</cve>
   </suppress>
-
-  <suppress until="2020-01-31">
-    <notes><![CDATA[
-   relates to form based authentication, not relevant to us, fix will be picked up in next spring boot update
-   ]]></notes>
-    <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed.*$</packageUrl>
-    <cve>CVE-2019-17563</cve>
-    <cve>CVE-2019-12418</cve>
-  </suppress>
-
+  <!--End of false positives section -->
 </suppressions>

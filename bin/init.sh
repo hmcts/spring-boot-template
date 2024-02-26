@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 #
 # Script to initialise project by executing steps as follows:
 #   - Replace port number
@@ -11,21 +11,42 @@
 
 read -p "Port number for new app: " port
 read -p "Replace \`demo\` package name with: " package
-
-git_slug=$(git config remote.origin.url | cut -d '/' -f 2)
-slug=${git_slug%.*}
-
-read -p "Repo slug: (leave blank for \"$slug\") " new_slug
+read -p "Repo product: (It's first part of the git repo name. Often a team name) " product_name
+read -p "Repo component: (It's second part of git repo name. Application name) " component_name
 
 pushd $(dirname "$0")/.. > /dev/null
 
-if [[ ! -z  "$new_slug"  ]]
-then
-  slug="$new_slug"
-fi
+slug="$product_name-$component_name"
 
-declare -a files_with_port=(.env Dockerfile README.md src/main/resources/application.yaml)
-declare -a files_with_slug=(build.gradle docker-compose.yml Dockerfile README.md web.config ./infrastructure/main.tf ./src/main/java/uk/gov/hmcts/reform/demo/controllers/RootController.java)
+declare -a files_with_port=(.env Dockerfile README.md src/main/resources/application.yaml charts/rpe-spring-boot-template/values.yaml)
+declare -a files_with_slug=(build.gradle docker-compose.yml Dockerfile README.md ./infrastructure/main.tf ./src/main/java/uk/gov/hmcts/reform/demo/controllers/RootController.java charts/rpe-spring-boot-template/Chart.yaml)
+
+# Replace in CNP file
+for i in "Jenkinsfile_template"
+do
+  perl -i -pe "s/rpe/$product_name/g" ${i}
+  perl -i -pe "s/demo/$component_name/g" ${i}
+done
+
+# Replace image repo
+for i in "charts/rpe-spring-boot-template/values.yaml"
+do
+  perl -i -pe "s/rpe/$product_name/g" ${i}
+  perl -i -pe "s/spring-boot-template/$component_name/g" ${i}
+done
+
+#update maintainer name
+for i in "charts/rpe-spring-boot-template/Chart.yaml"
+do
+  perl -i -pe "s/rpe/$product_name/g" ${i}
+done
+
+#update app insights & file mount config
+for i in "src/main/resources/application.yaml lib/applicationinsights.json"
+do
+  perl -i -pe "s/rpe/$product_name/g" ${i}
+  perl -i -pe "s/demo/$component_name/g" ${i}
+done
 
 # Replace port number
 for i in ${files_with_port[@]}
@@ -41,11 +62,20 @@ done
 
 # Replace demo package in all files under ./src
 find ./src -type f -print0 | xargs -0 perl -i -pe "s/reform.demo/reform.$package/g"
+find ./.github/workflows -type f -print0 | xargs -0 perl -i -pe "s/reform.demo/reform.$package/g"
 perl -i -pe "s/reform.demo/reform.$package/g" build.gradle
 
+# Rename charts directory
+git mv charts/rpe-spring-boot-template charts/${slug}
+
 # Rename directory to provided package name
+git mv src/functionalTest/java/uk/gov/hmcts/reform/demo/ src/functionalTest/java/uk/gov/hmcts/reform/${package}
 git mv src/integrationTest/java/uk/gov/hmcts/reform/demo/ src/integrationTest/java/uk/gov/hmcts/reform/${package}
 git mv src/main/java/uk/gov/hmcts/reform/demo/ src/main/java/uk/gov/hmcts/reform/${package}
+git mv src/smokeTest/java/uk/gov/hmcts/reform/demo/ src/smokeTest/java/uk/gov/hmcts/reform/${package}
+
+# Rename CNP file
+git mv Jenkinsfile_template Jenkinsfile_CNP
 
 declare -a headers_to_delete=("Purpose" "What's inside" "Plugins" "Setup" "Hystrix")
 

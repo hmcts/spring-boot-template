@@ -1,0 +1,8 @@
+* @hmcts/platform-operations @hmcts/developer-enablement
+
+# Ignore files updated by Renovate
+gradle/wrapper/gradle-wrapper.properties
+Dockerfile
+build.gradle
+charts/**/Chart.yaml
+.github/workflows/*.yaml
