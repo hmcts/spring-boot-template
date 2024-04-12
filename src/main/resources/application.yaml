@@ -1,5 +1,6 @@
 server:
   port: 4550
+  shutdown: "graceful"
 
 # If you use a database then uncomment the `group:, readiness: and include: "db"` lines in the health probes and uncomment the datasource section
 management:
