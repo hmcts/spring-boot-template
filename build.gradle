@@ -1,7 +1,7 @@
 plugins {
   id 'application'
   id 'jacoco'
-  id 'io.spring.dependency-management' version '1.1.4'
+  id 'io.spring.dependency-management' version '1.1.5'
   id 'org.springframework.boot' version '3.2.0'
   id 'com.github.ben-manes.versions' version '0.51.0'
   id 'org.sonarqube' version '5.0.0.4638'
@@ -9,7 +9,7 @@ plugins {
     Applies analysis tools including checkstyle and OWASP Dependency checker.
     See https://github.com/hmcts/gradle-java-plugin
  */
-  id 'uk.gov.hmcts.java' version '0.12.60'
+  id 'uk.gov.hmcts.java' version '0.12.61'
 }
 
 group = 'uk.gov.hmcts.reform'
@@ -17,7 +17,7 @@ version = '0.0.1'
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(17)
+    languageVersion = JavaLanguageVersion.of(21)
   }
 }
 
