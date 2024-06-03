@@ -9,7 +9,7 @@ plugins {
     Applies analysis tools including checkstyle and OWASP Dependency checker.
     See https://github.com/hmcts/gradle-java-plugin
  */
-  id 'uk.gov.hmcts.java' version '0.12.62'
+  id 'uk.gov.hmcts.java' version '0.12.63'
 }
 
 group = 'uk.gov.hmcts.reform'
