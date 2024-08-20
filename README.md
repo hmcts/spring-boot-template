@@ -110,17 +110,20 @@ Create the image of the application by executing the following command:
   ./gradlew assemble
 ```
 
+Note: Docker Compose V2 is highly recommended for building and running the application.
+In the Compose V2 old `docker-compose` command is replaced with `docker compose`.
+
 Create docker image:
 
 ```bash
-  docker-compose build
+  docker compose build
 ```
 
 Run the distribution (created in `build/install/spring-boot-template` directory)
 by executing the following command:
 
 ```bash
-  docker-compose up
+  docker compose up
 ```
 
 This will start the API container exposing the application's port
@@ -155,7 +158,7 @@ For more information:
 Script includes bare minimum environment variables necessary to start api instance. Whenever any variable is changed or any other script regarding docker image/container build, the suggested way to ensure all is cleaned up properly is by this command:
 
 ```bash
-docker-compose rm
+docker compose rm
 ```
 
 It clears stopped containers correctly. Might consider removing clutter of images too, especially the ones fiddled with:
