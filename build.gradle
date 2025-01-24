@@ -3,7 +3,7 @@ plugins {
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.1.7'
   id 'org.springframework.boot' version '3.4.2'
-  id 'com.github.ben-manes.versions' version '0.51.0'
+  id 'com.github.ben-manes.versions' version '0.52.0'
   id 'org.sonarqube' version '6.0.1.5171'
   /*
     Applies analysis tools including checkstyle and OWASP Dependency checker.
