@@ -1,4 +1,6 @@
 #!groovy
+// If this is new microservice built on the template and you want it to run in Jenkins, you 
+// will need to follow these steps: https://hmcts.github.io/cloud-native-platform/new-component/github-repo.html
 
 @Library("Infrastructure")
 
