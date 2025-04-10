@@ -24,34 +24,18 @@ java {
   }
 }
 
-sourceSets {
-  functionalTest {
-    java {
-      compileClasspath += main.output
-      runtimeClasspath += main.output
-      srcDir file('src/functionalTest/java')
+def configureSourceSet(String name) {
+  sourceSets.create(name) { sourceSet ->
+    sourceSet.java {
+      compileClasspath += sourceSets.main.output + sourceSets.test.output
+      runtimeClasspath += sourceSets.main.output + sourceSets.test.output
+      srcDir "src/${name}/java"
     }
-    resources.srcDir file('src/functionalTest/resources')
-  }
-
-  integrationTest {
-    java {
-      compileClasspath += main.output
-      runtimeClasspath += main.output
-      srcDir file('src/integrationTest/java')
-    }
-    resources.srcDir file('src/integrationTest/resources')
-  }
-
-  smokeTest {
-    java {
-      compileClasspath += main.output
-      runtimeClasspath += main.output
-      srcDir file('src/smokeTest/java')
-    }
-    resources.srcDir file('src/smokeTest/resources')
+    sourceSet.resources.srcDir "src/${name}/resources"
   }
 }
+
+['smokeTest', 'integrationTest', 'functionalTest'].each { configureSourceSet(it) }
 
 configurations {
   functionalTestImplementation.extendsFrom testImplementation
