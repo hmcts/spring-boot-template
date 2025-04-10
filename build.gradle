@@ -12,8 +12,11 @@ plugins {
   id 'uk.gov.hmcts.java' version '0.12.65'
 }
 
-group = 'uk.gov.hmcts.reform'
-version = '0.0.1'
+application {
+  mainClass = 'uk.gov.hmcts.reform.demo.Application'
+  group = 'uk.gov.hmcts.reform'
+  version = '0.0.1'
+}
 
 java {
   toolchain {
@@ -175,8 +178,6 @@ dependencies {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
 }
-
-mainClassName = 'uk.gov.hmcts.reform.demo.Application'
 
 bootJar {
   archiveFileName = "spring-boot-template.jar"
