@@ -13,20 +13,18 @@ import static io.restassured.RestAssured.given;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class SampleSmokeTest {
-    protected static final String CONTENT_TYPE_VALUE = "application/json";
-
-    @Value("${TEST_URL:http://localhost:8080}")
+    @Value("${TEST_URL:http://localhost:4550}")
     private String testUrl;
 
     @BeforeEach
     public void setUp() {
-        RestAssured.baseURI = testUrl;
         RestAssured.useRelaxedHTTPSValidation();
     }
 
     @Test
     void smokeTest() {
         Response response = given()
+            .baseUri(testUrl)
             .contentType(ContentType.JSON)
             .when()
             .get()
@@ -35,5 +33,5 @@ class SampleSmokeTest {
 
         Assertions.assertEquals(200, response.statusCode());
         Assertions.assertTrue(response.asString().startsWith("Welcome"));
-    } 
+    }
 }
