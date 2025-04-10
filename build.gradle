@@ -91,14 +91,14 @@ tasks.register('smoke', Test) {
 jacocoTestReport {
   executionData(test, integration)
   reports {
-    xml.required = true
-    csv.required = false
-    html.required = true
+    xml.getRequired().set(true)
+    csv.getRequired().set(false)
+    html.getRequired().set(true)
   }
 }
 
-project.tasks['sonarqube'].dependsOn jacocoTestReport
-project.tasks['check'].dependsOn integration
+tasks.sonarqube.dependsOn(jacocoTestReport)
+tasks.check.dependsOn(integration)
 
 sonarqube {
   properties {
@@ -127,7 +127,7 @@ dependencyCheck {
 repositories {
   mavenLocal()
   mavenCentral()
-  maven { url 'https://jitpack.io' }
+  maven { url = 'https://jitpack.io' }
 }
 
 ext {
