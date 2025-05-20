@@ -153,7 +153,11 @@ dependencies {
   implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
   implementation group: 'ch.qos.logback', name: 'logback-core', version: logbackVersion
 
-  testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+  testImplementation('org.springframework.boot:spring-boot-starter-test') {
+    exclude group: 'junit', module: 'junit' // excludes JUnit 4
+    exclude group: 'org.junit.vintage', module: 'junit-vintage-engine' // disables JUnit 4 engine
+  }
+
   testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.5.2'
 }
 
