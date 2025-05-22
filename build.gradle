@@ -4,7 +4,7 @@ plugins {
   id 'io.spring.dependency-management' version '1.1.7'
   id 'org.springframework.boot' version '3.4.5'
   id 'com.github.ben-manes.versions' version '0.52.0'
-  id 'org.sonarqube' version '6.1.0.5360'
+  id 'org.sonarqube' version '6.2.0.5505'
   /*
     Applies analysis tools including checkstyle and OWASP Dependency checker.
     See https://github.com/hmcts/gradle-java-plugin
