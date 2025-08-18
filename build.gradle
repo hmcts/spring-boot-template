@@ -154,7 +154,7 @@ dependencies {
   implementation group: 'ch.qos.logback', name: 'logback-core', version: logbackVersion
 
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-  testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.5.5'
+  testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.5.6'
 }
 
 bootJar {
