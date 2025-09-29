@@ -1,0 +1,42 @@
+# The below YAML is a template for a Backstage catalog-info.yaml file. It should be updated to match the details of your service/component where applicable.
+# For further information on how to update this file to use other features of HMCTS Backstage, please see the HMCTS Backstage examples README: https://github.com/hmcts/backstage-hmcts-examples
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "${{ values.product }}-${{ values.component }}"
+  description: "${{ values.description }}"
+  annotations:
+    # This should match folder-name/job-name in Jenkins.
+    jenkins.io/job-full-name: cft:HMCTS_${{ values.product }}/${{ values.destination.repo }}
+    github.com/project-slug: '${{ values.destination.owner }}/${{ values.destination.repo }}'
+  tags:
+    - java
+  links:
+    - url: https://hmcts-reform.slack.com/app_redirect?channel=${{ values.slack_contact_channel }}
+      title: ${{ values.slack_contact_channel }} on Slack
+      icon: chat
+spec:
+  type: service
+  system: ${{ values.product }}
+  lifecycle: experimental
+  owner: ${{ values.owner }}
+
+# Uncomment the below once the project has an API file to link to
+#---
+#
+#apiVersion: backstage.io/v1alpha1
+#kind: API
+#metadata:
+#  name: "${{ values.description }}-api"
+#  description: Update this description to describe the purpose of this API entity
+#  annotations:
+#    github.com/project-slug: '${{ values.destination.owner }}/${{ values.destination.repo }}'
+#spec:
+#  type: openapi
+#  lifecycle: experimental
+#  owner: ${{ values.owner }}
+#  system: ${{ values.product }}
+#  apiProvidedBy: "${{ values.product }}-${{ values.component }}"
+#  definition:
+#    # Update the below to the raw URL of your OpenAPI spec
+#    $text: https://raw.githubusercontent.com/hmcts/backstage-hmcts-examples/master/src/main/resources/openapi/testspec.yaml
