@@ -20,7 +20,9 @@ application {
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(21)
+    languageVersion = JavaLanguageVersion.of(
+      findProperty("javaVersion")?.toInteger() ?: 21
+    )
   }
 }
 
@@ -40,12 +42,15 @@ def configureSourceSet(String name) {
 configurations {
   functionalTestImplementation.extendsFrom testImplementation
   functionalTestRuntimeOnly.extendsFrom runtimeOnly
+  functionalTestRuntimeOnly.extendsFrom testRuntimeOnly
 
   integrationTestImplementation.extendsFrom testImplementation
   integrationTestRuntimeOnly.extendsFrom runtimeOnly
+  integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
 
   smokeTestImplementation.extendsFrom testImplementation
   smokeTestRuntimeOnly.extendsFrom runtimeOnly
+  smokeTestRuntimeOnly.extendsFrom testRuntimeOnly
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -155,6 +160,7 @@ dependencies {
 
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
   testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.5.6'
+  testRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-launcher'
 }
 
 bootJar {

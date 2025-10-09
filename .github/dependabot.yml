@@ -1,0 +1,18 @@
+version: 2
+updates:
+  - package-ecosystem: "gradle"
+    directory: "/" # location of build.gradle
+    schedule:
+      interval: "daily" # or "weekly", "monthly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "github-actions"
+    directory: "/" # location of your workflow files
+    schedule:
+      interval: "weekly"
