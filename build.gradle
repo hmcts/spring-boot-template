@@ -3,7 +3,7 @@ plugins {
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.1.7'
   id 'org.springframework.boot' version '3.5.5'
-  id 'com.github.ben-manes.versions' version '0.53.0'
+  id 'com.github.ben-manes.versions' version '0.52.0'
   id 'org.sonarqube' version '6.3.1.5724'
   /*
     Applies analysis tools including checkstyle and OWASP Dependency checker.
@@ -20,9 +20,7 @@ application {
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(
-      findProperty("javaVersion")?.toInteger() ?: 21
-    )
+    languageVersion = JavaLanguageVersion.of(21)
   }
 }
 
@@ -42,15 +40,12 @@ def configureSourceSet(String name) {
 configurations {
   functionalTestImplementation.extendsFrom testImplementation
   functionalTestRuntimeOnly.extendsFrom runtimeOnly
-  functionalTestRuntimeOnly.extendsFrom testRuntimeOnly
 
   integrationTestImplementation.extendsFrom testImplementation
   integrationTestRuntimeOnly.extendsFrom runtimeOnly
-  integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
 
   smokeTestImplementation.extendsFrom testImplementation
   smokeTestRuntimeOnly.extendsFrom runtimeOnly
-  smokeTestRuntimeOnly.extendsFrom testRuntimeOnly
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -138,8 +133,8 @@ repositories {
 }
 
 ext {
-  log4JVersion = "2.25.2"
-  logbackVersion = "1.5.19"
+  log4JVersion = "2.25.1"
+  logbackVersion = "1.5.18"
 }
 
 ext['snakeyaml.version'] = '2.0'
@@ -160,7 +155,6 @@ dependencies {
 
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
   testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.5.6'
-  testRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-launcher'
 }
 
 bootJar {

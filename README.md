@@ -89,16 +89,6 @@ The template contains the following plugins:
 
 Located in `./bin/init.sh`. Simply run and follow the explanation how to execute it.
 
-## Java version
-
-The HMCTS Java plugin configures the Gradle toolchain using the `javaVersion` project property.
-This template defaults to Java&nbsp;21, so no extra flag is needed for local development. When you want
-to be explicit (for example in CI), pass the property on the command line, e.g.
-
-```bash
-./gradlew check -PjavaVersion=21
-```
-
 ## Building and deploying the application
 
 ### Building the application
@@ -184,3 +174,4 @@ There is no need to remove postgres and java or similar core images.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
