@@ -10,7 +10,7 @@ legitimate security issues in a timely and coordinated manner.
 
 ## Reporting a vulnerability
 
-If you believe you have identified a security vulnerability in this repository, please report it by email to: 
+If you believe you have identified a security vulnerability in this repository, please report it by email to:
 
 HMCTSVulnerabilityDisclosure@justice.gov.uk
 
@@ -48,7 +48,6 @@ When investigating or reporting a vulnerability affecting HMCTS systems, reporte
 - Demand payment or compensation in exchange for disclosure
 
 These guidelines are intended to protect users, services, and data while allowing good-faith security research.
-
 
 ## Bug Bounty
 
